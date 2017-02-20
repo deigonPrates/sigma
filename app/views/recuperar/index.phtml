@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-custom">
+            <div class="panel-heading">
+                <a id="logo" href="<?php echo BASE; ?>">
+                    <img class="img-responsive" src="<?php echo IMG; ?>hxphp-logo.png" alt="">
+                </a> <br>
+                <?php echo (isset($this->menu) ? $this->menu : ''); ?>
+            </div>
+            <div class="panel-body">
+              <?php echo (isset($this->alert) ? $this->alert : ''); ?>
+              <div class="alert alert-block alert-warning">
+                  <h4>Informe a matricula que deseja recuperar a senha</4>
+              </div>
+              <form action="<?php echo BASE; ?>login/logar" class="form-horizontal" method="post">
+                <div class="form-group">
+                  <label for="registration" name="registration" class="col-sm-2 control-label">Matricula:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="registration" value="<?php echo $this->request->post('registration') ?>" placeholder="1234567890">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Recuperar</button>
+                  </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-custom">
+            <div class="panel-heading">
+                <a id="logo" href="<?php echo BASE; ?>">
+                    <img class="img-responsive" src="<?php echo IMG; ?>hxphp-logo.png" alt="">
+                </a> <br>
+                <?php echo (isset($this->menu) ? $this->menu : ''); ?>
+            </div>
+            <div class="panel-body">
+              <?php echo (isset($this->alert) ? $this->alert : ''); ?>
+              <form action="<?php echo BASE; ?>cadastro/cadastrar" class="form-horizontal" method="post">
+                <div class="form-group">
+                  <label for="activities_id" name="activities_id" class="col-sm-2 control-label">Avaliação:</label>
+                    <div class="col-sm-10">
+                      <select required class="form-control" name="sex">
+                      <option selected="" disabled="">Selecione</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="query" class="col-sm-2 control-label">Pergunta:</label>
+                  <div class="col-sm-10">
+                    <input required type="text" name="query" class="form-control" id="query" value="<?php echo $this->request->post('query') ?>" placeholder="Qual é a raiz de 190">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="alternative_a" class="col-sm-2 control-label">A:</label>
+                  <div class="col-sm-10">
+                    <input required type="text" name="alternative_a" class="form-control" id="alternative_a" value="<?php echo $this->request->post('alternative_a') ?>" placeholder="10">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="alternative_b" class="col-sm-2 control-label">B:</label>
+                  <div class="col-sm-10">
+                    <input required type="text" name="alternative_b" class="form-control" id="alternative_b" value="<?php echo $this->request->post('alternative_b') ?>" placeholder="11">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="alternative_c" class="col-sm-2 control-label">C:</label>
+                  <div class="col-sm-10">
+                    <input required type="text" name="alternative_c" class="form-control" id="alternative_c" value="<?php echo $this->request->post('alternative_c') ?>" placeholder="8">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="alternative_d" class="col-sm-2 control-label">D:</label>
+                  <div class="col-sm-10">
+                    <input required type="text" name="alternative_d" class="form-control" id="alternative_d" value="<?php echo $this->request->post('alternative_d') ?>" placeholder="13">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="alternative_e" class="col-sm-2 control-label">E:</label>
+                  <div class="col-sm-10">
+                    <input required type="text" name="alternative_e" class="form-control" id="alternative_e" value="<?php echo $this->request->post('alternative_e') ?>" placeholder="17">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="alternative_e" class="col-sm-2 control-label">Resposta:</label>
+                  <div class="col-sm-10">
+                    <input required type="text" name="answer" class="form-control" id="answer" value="<?php echo $this->request->post('answer') ?>" placeholder="D">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                  </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

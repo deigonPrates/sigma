@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-custom">
+            <div class="panel-heading">
+                <a id="logo" href="<?php echo BASE; ?>">
+                    <img class="img-responsive" src="<?php echo IMG; ?>hxphp-logo.png" alt="">
+                </a> <br>
+                <?php echo (isset($this->menu) ? $this->menu : ''); ?>
+            </div>
+            <div class="panel-body">
+              <?php echo (isset($this->alert) ? $this->alert : ''); ?>
+              <form action="<?php echo BASE; ?>cadastro/cadastrar" class="form-horizontal" method="post">
+                <div class="form-group">
+                  <label for="name" class="col-sm-2 control-label">Nome:</label>
+                  <div class="col-sm-10">
+                    <input required type="text" name="name" class="form-control" id="name" value="<?php echo $this->request->post('name') ?>" placeholder="1 ano matutino">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-2 control-label">Ano</label>
+                  <div class="col-sm-10">
+                    <input required type="date" name="year" class="form-control" id="year" value="<?php echo $this->request->post('year') ?>" placeholder="2017">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="sex" name="sex" class="col-sm-2 control-label">Professor:</label>
+                    <div class="col-sm-10">
+                      <select required class="form-control" name="sex">
+                      <option selected="" disabled="">Selecione</option>
+                      <option value="1">Pefessor 1</option>
+                      <option value="2">Pefessor 2</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                  </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
