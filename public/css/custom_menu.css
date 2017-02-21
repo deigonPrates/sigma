@@ -17,9 +17,10 @@ body,html{
     max-width:200px;
     max-height:150px;
     width: auto;
-    height: auto;
+    height: 22%;
   }
   .logo{
+    margin-top: 4%;
     background-color: #f8f8f8;
     max-width:60%;
     max-height:200px;
