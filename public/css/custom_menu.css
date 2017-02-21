@@ -1,7 +1,10 @@
 body,html{
     height: 100%;
   }
-
+  ul.nav li.dropdown:hover ul.dropdown-menu
+  {
+      display: block;
+  }
   nav.sidebar, .main{
     margin-top: 10%;
     -webkit-transition: margin 200ms ease-out;
