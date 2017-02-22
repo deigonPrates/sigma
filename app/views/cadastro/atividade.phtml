@@ -11,16 +11,6 @@
               <?php echo (isset($this->alert) ? $this->alert : ''); ?>
               <form action="<?php echo BASE; ?>cadastro/cadastrar" class="form-horizontal" method="post">
                 <div class="form-group">
-                  <label for="sex" name="sex" class="col-sm-2 control-label">Professor:</label>
-                    <div class="col-sm-10">
-                      <select required class="form-control" name="sex">
-                      <option selected="" disabled="">Selecione</option>
-                      <option value="1">Pefessor 1</option>
-                      <option value="2">Pefessor 2</option>
-                      </select>
-                    </div>
-                </div>
-                <div class="form-group">
                   <label for="subject" class="col-sm-2 control-label">Assunto:</label>
                   <div class="col-sm-10">
                     <input required type="text" name="subject" class="form-control" id="subject" value="<?php echo $this->request->post('subject') ?>" placeholder="Equação do 1 grau">
@@ -34,6 +24,17 @@
                 </div>
                 <div class="form-group">
                   <label for="date" class="col-sm-2 control-label">Data:</label>
+                  <div class="col-sm-10">
+                    <input required type="date" name="year" class="form-control" id="date" value="<?php echo $this->request->post('date') ?>" placeholder="02/10/2017">
+                  </div>
+                </div>
+                <!--Falta terminar a parde da data
+                /*
+                * URGENTE
+                */
+                -->
+                <div class="form-group">
+                  <label for="date" class="col-sm-2 control-label">Disponivel:</label>
                   <div class="col-sm-10">
                     <input required type="date" name="year" class="form-control" id="date" value="<?php echo $this->request->post('date') ?>" placeholder="02/10/2017">
                   </div>

@@ -3020,7 +3020,6 @@ select[multiple].input-lg {
       -ms-user-select: none;
           user-select: none;
   background-image: none;
-  border: 1px solid transparent;
   border-radius: 4px;
 }
 .btn:focus,
@@ -4028,7 +4027,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li > a {
   margin-right: 2px;
   line-height: 1.42857143;
-  border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
 }
 .nav-tabs > li > a:hover {
@@ -4170,7 +4168,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -4303,7 +4300,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 8px;
   background-color: transparent;
   background-image: none;
-  border: 1px solid transparent;
   border-radius: 4px;
 }
 .navbar-toggle:focus {
@@ -4498,6 +4494,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
+  margin-left: 14%!important;
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -5030,7 +5027,6 @@ a.thumbnail.active {
 .alert {
   padding: 15px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
   border-radius: 4px;
 }
 .alert h4 {
@@ -5453,7 +5449,6 @@ button.list-group-item-danger.active:focus {
 .panel {
   margin-bottom: 20px;
   background-color: #fff;
-  border: 1px solid transparent;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
