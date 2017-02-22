@@ -82,30 +82,6 @@ class User  extends \HXPHP\System\Model{
    * @param type $id utilizado para identificar qual a senha a ser atualizada
    *
    */
-  public static function updatePassword($id){
-
-    $callbackObj = new \stdClass();
-    $callbackObj->status = FALSE;
-    $callbackObj->errors= array();
-
-    $matricula = $this->request->post('registration');
-    $password = $this->request->post('password');
-    $busca = self::find($id);
-
-    /*
-     * a validação será a senha antiga
-     */
-    if($busca->registration === $matricula){
-       $up = \HXPHP\System\Tools::hashHX($password);
-        $busca->update_attributes(array(
-          'password' => $up['password'],
-          'salt' => $up['salt']
-        ));
-        $callbackObj->status = TRUE;
-
-        return $callbackObj;
-    }
-  }
 
   public static function login(array $post){
 

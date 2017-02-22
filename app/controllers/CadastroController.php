@@ -55,10 +55,5 @@ class CadastroController extends \HXPHP\System\Controller{
     $this->view->setFile('questao');
   }
 
-  public function testeAction()
-  {
-    $this->view->setFile('questao');
-    User::updatePassword(12);
-  }
 
 }
