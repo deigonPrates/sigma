@@ -12,6 +12,19 @@ body,html{
       -o-transition: margin 200ms ease-out;
       transition: margin 200ms ease-out;
   }
+.menu_fixo{
+    height: 7%;
+    width: 90%;
+    background-color: #f8f8f8;
+    margin-left: 10%;
+}
+.conteudo{
+    margin-left: 15%;
+    margin-top: 5px;
+    height: 82%;
+    width: 1158px;
+    background-color: #f8f8f8;
+}
   .logo-sigma{
     background-color: #f8f8f8;
     max-width:200px;
@@ -58,9 +71,6 @@ body,html{
       padding-right: 13px;
     }
 
-    nav.sidebar .navbar-nav > li:first-child{
-      border-top: 2px #e5e5e5 solid;
-    }
 
     nav.sidebar .navbar-nav > li{
       border-bottom: 1px #e5e5e5 solid;
