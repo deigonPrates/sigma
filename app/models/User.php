@@ -129,7 +129,6 @@ class User  extends \HXPHP\System\Model{
     $callbackObj->user = null;
     $callbackObj->status = FALSE;
     $callbackObj->code= null;
-    $callbackObj->teste = null;
 
     $oldpass = $post['oldpass'];
     $newpass = $post['newpass'];
@@ -138,7 +137,6 @@ class User  extends \HXPHP\System\Model{
     $user = self::find($post['user_id']);
 
     $password = \HXPHP\System\Tools::hashHX($oldpass, $user->salt);
-    $callbackObj->teste = $password;
 
     if($password['password'] === $user->password){
 
@@ -185,12 +183,14 @@ class User  extends \HXPHP\System\Model{
       'email' => $post['email']
     ));
 
-    if($upPerfil->is_valid()){
-        $callbackObj->user = $upPerfil;
+    if($user->is_valid()){
+        $callbackObj->user = $user;
         $callbackObj->status = true;
+
+        return $callbackObj;
     }
 
-    $errors = $upPerfil->errors->get_raw_errors();
+    $errors = $user->errors->get_raw_errors();
 
     foreach ($errors as $fild => $message) {
         array_push($callbackObj->errors, $message[0]);

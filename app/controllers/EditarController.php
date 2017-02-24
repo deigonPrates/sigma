@@ -13,9 +13,6 @@ class EditarController extends \HXPHP\System\Controller{
 
       $this->auth->redirectCheck(false);
   }
-  public function perfilAction(){
-    $this->view->setFile('perfil');
-  }
 
   public function senhaAction(){
     $this->view->setFile('senha');
@@ -54,24 +51,30 @@ class EditarController extends \HXPHP\System\Controller{
       $this->request->setCustomFilters(array(
         'email' => FILTER_VALIDATE_EMAIL
       ));
+      $post = $this->request->post();
 
-      $editarPerfil = User::editarPerfil($this->request->post());
+      $array = array(
+         'user_id' => $this->auth->getUserId()
+       );
 
-      if($editarPerfil->status === false){
-        $this->load('Helpers\Alert', array(
-          'danger',
-          'Por favor, corrija os erros encontrados para efetuar o cadastro!',
-          $editarPerfil->errors
-        ));
-      }else{
-        $this->load('Helpers\Alert', array(
-            'success',
-            'Atualização efetuada com sucesso!',
-            $editarPerfil->errors
-        ));
-      }
+          if(!empty($post) && !empty($post['sex'])){
+              $post = array_merge($post, $array);
+              $editarPerfil = User::editarPerfil($post);
 
-  }
+             if($editarPerfil->status === false){
+                $this->load('Helpers\Alert', array(
+                  'danger',
+                  'Por favor, corrija os erros encontrados para efetuar a atualização!',
+                  $editarPerfil->errors
+                ));
+              }else{
+                $this->load('Helpers\Alert', array(
+                    'success',
+                    'Atualizações efetuadas com sucesso!',
+                    $editarPerfil->errors
+                ));
+              }
+          }
 
-  /*Fim da classe*/
+    }
 }
