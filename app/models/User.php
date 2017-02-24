@@ -64,8 +64,6 @@ class User  extends \HXPHP\System\Model{
       if($cadastrar->is_valid()){
           $callbackObj->user = $cadastrar;
           $callbackObj->status = true;
-
-          return $callbackObj;
       }
 
       $errors = $cadastrar->errors->get_raw_errors();
@@ -125,4 +123,79 @@ class User  extends \HXPHP\System\Model{
       return $callbackObj;
   }
 
+  public static function redefinirPass(array $post){
+
+    $callbackObj = new \stdClass();
+    $callbackObj->user = null;
+    $callbackObj->status = FALSE;
+    $callbackObj->code= null;
+    $callbackObj->teste = null;
+
+    $oldpass = $post['oldpass'];
+    $newpass = $post['newpass'];
+    $checkpass = $post['checkpass'];
+
+    $user = self::find($post['user_id']);
+
+    $password = \HXPHP\System\Tools::hashHX($oldpass, $user->salt);
+    $callbackObj->teste = $password;
+
+    if($password['password'] === $user->password){
+
+      if($newpass === $checkpass){
+        $up = \HXPHP\System\Tools::hashHX($newpass);
+        $callbackObj->user = $user->id;
+        $callbackObj->status = true;
+
+        $user->update_attributes(array(
+          'password' => $up['password'],
+          'salt' => $up['salt']
+        ));
+
+      }else{
+        $callbackObj->code = 'senha-invalida';
+      }
+
+    }else{
+      $callbackObj->code = 'senha-incorreta';
+    }
+
+    return $callbackObj;
+
+  }
+
+  public static function editarPerfil(array $post){
+
+    $callbackObj = new \stdClass;
+    $callbackObj->user = null;
+    $callbackObj->status = false;
+    $callbackObj->errors = array();
+
+    $user = self::find($post['user_id']);
+
+    $user->update_attributes(array(
+      'role_id' => $post['role_id'],
+      'registration' => $post['registration'],
+      'name' => $post['name'],
+      'username' => $post['username'],
+      'birth' => $post['birth'],
+      'sex' => $post['sex'],
+      'phone' => $post['phone'],
+      'address' => $post['address'],
+      'email' => $post['email']
+    ));
+
+    if($upPerfil->is_valid()){
+        $callbackObj->user = $upPerfil;
+        $callbackObj->status = true;
+    }
+
+    $errors = $upPerfil->errors->get_raw_errors();
+
+    foreach ($errors as $fild => $message) {
+        array_push($callbackObj->errors, $message[0]);
+    }
+
+    return $callbackObj;
+  }
 }
