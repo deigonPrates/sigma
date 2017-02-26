@@ -1,0 +1,45 @@
+<div class="panel-body conteudo">
+	<?php
+		echo (isset($this->alert) ? $this->alert : '');
+	?>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Assunto</th>
+				<th>Turma</th>
+				<th>Data</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+        $id = 1;
+				if ($view_activity) :
+					foreach ($view_activity as $activity) :
+			?>
+						<tr>
+							<td><?php echo $id; ?></td>
+							<td><?php echo $activity->subject; ?></td>
+							<td><?php echo $activity->rooms_id; ?></td>
+  						<td><?php echo $activity->date; ?></td>
+							<td>
+              	<?php if ($activity->status === 0) : ?>
+									<a href="<?php echo BASE . 'sigma/desbloquearAtividade/' . $activity->id; ?>" class="btn btn-xs btn-success">
+										<i class="fa fa-unlock"></i> Desbloquear
+									</a>
+								<?php else: ?>
+									<a href="<?php echo BASE . 'sigma/bloquearAtividade/' . $activity->id; ?>" class="btn btn-xs btn-danger">
+										<i class="fa fa-lock"></i> Bloquear
+									</a>
+								<?php endif; ?>
+							</td>
+						</tr>
+			<?php
+            $id ++;
+					endforeach;
+				endif;
+			?>
+		</tbody>
+	</table>
+</div>
