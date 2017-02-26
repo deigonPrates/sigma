@@ -45,6 +45,14 @@ class CadastroController extends \HXPHP\System\Controller{
   }
   public function turmaAction(){
     $this->view->setFile('turma');
+
+    $post = $this->request->post();
+
+    $this->view->setVars([
+        'users' => Class::all()
+    ]);
+
+
   }
 
   public function atividadeAction(){
