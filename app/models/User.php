@@ -66,6 +66,7 @@ class User  extends \HXPHP\System\Model{
           $callbackObj->status = true;
 
           return $callbackObj;
+          
       }
 
       $errors = $cadastrar->errors->get_raw_errors();

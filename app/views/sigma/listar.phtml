@@ -1,0 +1,59 @@
+<div class="panel-body conteudo">
+	<?php
+		echo (isset($this->alert) ? $this->alert : '');
+	?>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Matricula</th>
+				<th>Nome</th>
+				<th>Papel</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+        $id = 1;
+				if ($view_users) :
+					foreach ($view_users as $user) :
+			?>
+						<tr>
+							<td><?php echo $id; ?></td>
+							<td><?php echo $user->registration; ?></td>
+							<td><?php echo $user->name; ?></td>
+              <?php if($user->role_id === 2) :?>
+  							<td><?php echo 'Professor'; ?></td>
+							<td>
+              <?php endif; ?>
+              <?php if($user->role_id === 3) :?>
+  							<td><?php echo 'Aluno'; ?></td>
+							<td>
+              <?php endif; ?>
+              <?php if($user->role_id === 4) :?>
+  							<td><?php echo 'Direção'; ?></td>
+							<td>
+              <?php endif; ?>
+								<?php if ($user->status === 0) : ?>
+									<a href="<?php echo BASE . 'sigma/desbloquear/' . $user->id; ?>" class="btn btn-xs btn-success">
+										<i class="fa fa-unlock"></i> Desbloquear
+									</a>
+								<?php else: ?>
+									<a href="<?php echo BASE . 'sigma/bloquear/' . $user->id; ?>" class="btn btn-xs btn-warning">
+										<i class="fa fa-lock"></i> Bloquear
+									</a>
+								<?php endif; ?>
+
+								<a href="<?php echo BASE . 'usuarios/excluir/' . $user->id; ?>" class="btn btn-xs btn-danger">
+									<i class="fa fa-trash"></i> Excluir
+								</a>
+							</td>
+						</tr>
+			<?php
+            $id ++;
+					endforeach;
+				endif;
+			?>
+		</tbody>
+	</table>
+</div>
