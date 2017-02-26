@@ -12,6 +12,9 @@ class EditarController extends \HXPHP\System\Controller{
       );
 
       $this->auth->redirectCheck(false);
+      $this->view->setVars([
+          'users' => User::all($this->auth->getUserId())
+      ]);
   }
 
   public function senhaAction(){
@@ -70,7 +73,7 @@ class EditarController extends \HXPHP\System\Controller{
               }else{
                 $this->load('Helpers\Alert', array(
                     'success',
-                    'Atualizações efetuadas com sucesso!',
+                    'Atualização realizada com sucesso!<br><h6>Por favor, saia do SIGMA e entre novamente, para que as atualizações entrem em vigor.</h6>',
                     $editarPerfil->errors
                 ));
               }

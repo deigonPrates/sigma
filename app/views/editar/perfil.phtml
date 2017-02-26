@@ -11,37 +11,27 @@
                 <?php echo (isset($this->alert) ? $this->alert : '')?>
               <form action="<?php echo BASE; ?>editar/perfil" class="form-horizontal" method="post">
                 <div class="form-group">
-                  <label for="role_id" class="col-sm-2 control-label">Usuario:</label>
-                  <div class="col-sm-10">
-                    <div class="radio">
-                        <label><input type="radio" name="role_id" id="role_id" value="3" checked>Aluno</label>
-                        <label><input type="radio" name="role_id" id="role_id" value="2">Professor</label>
-                        <label><input type="radio" name="role_id" id="role_id" value="4">Direção</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
                   <label for="registration" class="col-sm-2 control-label">Matricula:</label>
                   <div class="col-sm-10">
-                    <input required type="numeric" name="registration" class="form-control" id="registration" value="<?php echo $this->request->post('registration') ?>" placeholder="1234567890">
+                    <input required type="numeric" name="registration" class="form-control" id="registration" value="<?php echo $view_users->registration ?>" placeholder="1234567890">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="name" class="col-sm-2 control-label">Nome:</label>
                   <div class="col-sm-10">
-                    <input required type="text" name="name" class="form-control" id="name" value="<?php echo $this->request->post('name') ?>" placeholder="João Pedro Costa Da Silva">
+                    <input required type="text" name="name" class="form-control" id="name" value="<?php echo $view_users->name ?>" placeholder="João Pedro Costa Da Silva">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="username" class="col-sm-2 control-label">Username:</label>
                   <div class="col-sm-10">
-                    <input required type="text" name="username" class="form-control" id="username" value="<?php echo $this->request->post('username') ?>" placeholder="João">
+                    <input required type="text" name="username" class="form-control" id="username" value="<?php echo $view_users->username ?>" placeholder="João">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="birth" class="col-sm-2 control-label">Nascimento:</label>
                   <div class="col-sm-10">
-                    <input required type="date" name="birth" class="form-control" id="birth" value="<?php echo $this->request->post('birth') ?>" placeholder="05/10/2012">
+                    <input required type="text" name="birth" class="form-control" id="birth" value="" placeholder="05/10/2012">
                   </div>
                 </div>
                 <div class="form-group">
@@ -57,19 +47,19 @@
                 <div class="form-group">
                   <label for="phone" class="col-sm-2 control-label">Telefone:</label>
                   <div class="col-sm-10">
-                    <input  type="text" name="phone" class="form-control" id="phone" value="<?php echo $this->request->post('phone') ?>" placeholder="7734932123">
+                    <input  type="text" name="phone" class="form-control" id="phone" value="<?php echo $view_users->phone ?>" placeholder="7734932123">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="address" class="col-sm-2 control-label">Endereço:</label>
                   <div class="col-sm-10">
-                    <input required type="text" name="address" class="form-control" id="address" value="<?php echo $this->request->post('address') ?>" placeholder="Rua Getulho Vargas, N 123">
+                    <input required type="text" name="address" class="form-control" id="address" value="<?php echo $view_users->address ?>" placeholder="Rua Getulho Vargas, N 123">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="email" class="col-sm-2 control-label">E-mail:</label>
                   <div class="col-sm-10">
-                    <input  type="email" name="email" class="form-control" id="email"  value="<?php echo $this->request->post('email') ?>" placeholder="seu@email.com.br">
+                    <input  type="email" name="email" class="form-control" id="email"  value="<?php echo $view_users->email ?>" placeholder="seu@email.com.br">
                   </div>
                 </div>
               <!--

@@ -66,7 +66,7 @@ class User  extends \HXPHP\System\Model{
           $callbackObj->status = true;
 
           return $callbackObj;
-          
+
       }
 
       $errors = $cadastrar->errors->get_raw_errors();
@@ -175,7 +175,6 @@ class User  extends \HXPHP\System\Model{
     $user = self::find($post['user_id']);
 
     $user->update_attributes(array(
-      'role_id' => $post['role_id'],
       'registration' => $post['registration'],
       'name' => $post['name'],
       'username' => $post['username'],
