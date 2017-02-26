@@ -15,6 +15,10 @@ body,html{
   a{
     color: black;
   }
+.rodape{
+    margin-top: -5%;
+    color: black;
+}
 .menu_fixo{
     height: 7%;
     width: 90%;
