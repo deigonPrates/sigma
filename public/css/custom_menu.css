@@ -12,6 +12,9 @@ body,html{
       -o-transition: margin 200ms ease-out;
       transition: margin 200ms ease-out;
   }
+  a{
+    color: black;
+  }
 .menu_fixo{
     height: 7%;
     width: 90%;
