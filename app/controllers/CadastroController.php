@@ -45,18 +45,35 @@ class CadastroController extends \HXPHP\System\Controller{
   }
   public function turmaAction(){
     $this->view->setFile('turma');
-
     $post = $this->request->post();
-
-    $this->view->setVars([
-        'users' => Class::all()
-    ]);
-
 
   }
 
   public function atividadeAction(){
     $this->view->setFile('atividade');
+
+    $post = $this->request->post();
+
+    $this->view->setVars([
+        'room' => Room::all()
+    ]);
+    if(!empty($post)){
+      $cadastroAtividade = Activity::cadastrarAtividade($post);
+
+      if($cadastroAtividade->status === false){
+        $this->load('Helpers\Alert', array(
+          'danger',
+          'Por favor, corrija os erros encontrados para efetuar o cadastro!',
+          $cadastroAtividade->errors
+        ));
+      }else{
+        $this->load('Helpers\Alert', array(
+            'success',
+            'Cadastro efetuado com sucesso!',
+            $cadastroAtividade->errors
+        ));
+      }
+    }
   }
 
   public function questaoAction(){
