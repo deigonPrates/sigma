@@ -1,13 +1,9 @@
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-custom">
-            <div class="panel-heading">
-                <a id="logo" href="<?php echo BASE; ?>">
-                    <img class="img-responsive" src="<?php echo IMG; ?>hxphp-logo.png" alt="">
-                </a> <br>
-                <?php echo (isset($this->menu) ? $this->menu : ''); ?>
-            </div>
-            <div class="panel-body">
+<div class="panel-body conteudo">
+<div class="conteiner form-group">
+		<h3><p class="text-center">Editar perfil</p></h3><br>
+</div>
+<div class="conteiner form-group">
+    <div class="col-md-7 col-md-offset-3">
                 <?php echo (isset($this->alert) ? $this->alert : '')?>
               <form action="<?php echo BASE; ?>editar/perfil" class="form-horizontal" method="post">
                 <div class="form-group">
@@ -24,13 +20,11 @@
                 </div>
                 <div class="form-group">
                   <label for="username" class="col-sm-2 control-label">Username:</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-4">
                     <input required type="text" name="username" class="form-control" id="username" value="<?php echo $view_users->username ?>" placeholder="João">
                   </div>
-                </div>
-                <div class="form-group">
                   <label for="birth" class="col-sm-2 control-label">Nascimento:</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-4">
                     <input required type="text" name="birth" class="form-control" id="birth" value="<?php echo $view_users->birth?>" placeholder="05/10/2012">
                   </div>
                 </div>
@@ -62,14 +56,6 @@
                     <input  type="email" name="email" class="form-control" id="email"  value="<?php echo $view_users->email ?>" placeholder="seu@email.com.br">
                   </div>
                 </div>
-              <!--
-                <div class="form-group">
-                  <label for="password" class="col-sm-2 control-label">Senha:</label>
-                  <div class="col-sm-10">
-                </div>
-                    <input  type="password" name="password" class="form-control" id="password" placeholder="************">
-                </div>
-              -->
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Atualizar</button>
@@ -78,5 +64,3 @@
                 </form>
             </div>
         </div>
-    </div>
-</div>

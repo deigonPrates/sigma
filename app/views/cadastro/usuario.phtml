@@ -1,13 +1,9 @@
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-custom">
-            <div class="panel-heading">
-                <a id="logo" href="<?php echo BASE; ?>">
-                    <img class="img-responsive" src="<?php echo IMG; ?>hxphp-logo.png" alt="">
-                </a> <br>
-                <?php echo (isset($this->menu) ? $this->menu : ''); ?>
-            </div>
-            <div class="panel-body">
+<div class="panel-body conteudo">
+<div class="conteiner form-group">
+		<h3><p class="text-center">Cadastrar novo Usuário</p></h3><br>
+</div>
+<div class="conteiner form-group">
+    <div class="col-md-7 col-md-offset-3">
                 <?php echo (isset($this->alert) ? $this->alert : '')?>
               <form action="<?php echo BASE; ?>cadastro/cadastrar" class="form-horizontal" method="post">
                 <div class="form-group">
@@ -22,8 +18,12 @@
                 </div>
                 <div class="form-group">
                   <label for="registration" class="col-sm-2 control-label">Matricula:</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-4">
                     <input required type="numeric" name="registration" class="form-control" id="registration" value="<?php echo $this->request->post('registration') ?>" placeholder="1234567890">
+                  </div>
+									<label for="username" class="col-sm-2 control-label">Username:</label>
+                  <div class="col-sm-4">
+                    <input required type="text" name="username" class="form-control" id="username" value="<?php echo $this->request->post('username') ?>" placeholder="João">
                   </div>
                 </div>
                 <div class="form-group">
@@ -33,20 +33,12 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="username" class="col-sm-2 control-label">Username:</label>
-                  <div class="col-sm-10">
-                    <input required type="text" name="username" class="form-control" id="username" value="<?php echo $this->request->post('username') ?>" placeholder="João">
-                  </div>
-                </div>
-                <div class="form-group">
                   <label for="birth" class="col-sm-2 control-label">Nascimento:</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-4">
                     <input required type="text" name="birth" class="form-control" id="birth" value="<?php echo $this->request->post('birth') ?>" placeholder="05/10/2012">
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="sex" name="sex" class="col-sm-2 control-label">Sexo:</label>
-                    <div class="col-sm-10">
+									<label for="sex" name="sex" class="col-sm-2 control-label">Sexo:</label>
+                    <div class="col-sm-4">
                       <select required class="form-control" name="sex">
                       <option selected="" disabled="">Selecione</option>
                       <option value="Masculino">Masculino</option>
@@ -72,14 +64,6 @@
                     <input  type="email" name="email" class="form-control" id="email"  value="<?php echo $this->request->post('email') ?>" placeholder="seu@email.com.br">
                   </div>
                 </div>
-              <!--
-                <div class="form-group">
-                  <label for="password" class="col-sm-2 control-label">Senha:</label>
-                  <div class="col-sm-10">
-                </div>
-                    <input  type="password" name="password" class="form-control" id="password" placeholder="************">
-                </div>
-              -->
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Cadastrar</button>
@@ -88,5 +72,3 @@
                 </form>
             </div>
         </div>
-    </div>
-</div>

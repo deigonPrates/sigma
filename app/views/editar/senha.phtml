@@ -1,12 +1,9 @@
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-custom">
-            <div class="panel-heading">
-                <a id="logo" href="<?php echo BASE; ?>">
-                    <img class="img-responsive" src="<?php echo IMG; ?>hxphp-logo.png" alt="">
-                </a> <br>
-            </div>
-            <div class="panel-body">
+<div class="panel-body conteudo">
+<div class="conteiner form-group">
+		<h3><p class="text-center">Mudar a senha</p></h3><br>
+</div>
+<div class="conteiner form-group">
+    <div class="col-md-7 col-md-offset-3">
               <?php echo (isset($this->alert) ? $this->alert : ''); ?>
               <form action="<?php echo BASE; ?>editar/senha" class="form-horizontal" method="post">
                 <div class="form-group">
@@ -35,5 +32,3 @@
                 </form>
             </div>
         </div>
-    </div>
-</div>
