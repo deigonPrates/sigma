@@ -12,7 +12,17 @@ class SigmaController extends \HXPHP\System\Controller{
     );
 
     $this->auth->redirectCheck(false);
-      $this->view->setFile('listar');
+    $this->view->setFile('listar');
+    
+    $role_id = User::find_by_role_id($this->auth->getUserId())->role_id;
+
+   if(!empty($role_id)){
+     if($role_id != 3){
+       $this->view->setHeader('header_admin');
+     }else{
+       $this->view->setHeader('header_aluno');
+     }
+   }
 
   }
   public function listarAtividadeAction($user_id = null){
