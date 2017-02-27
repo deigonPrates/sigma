@@ -10,8 +10,7 @@
               <?php echo (isset($this->alert) ? $this->alert : ''); ?>
               <form action="<?php echo BASE; ?>cadastro/atividade" class="form-horizontal" method="post">
                 <div class="form-group">
-                  <label for="sex" name="sex" class="col-sm-2 control-label">Turma:</label>
-
+                  <label for="room" name="room" class="col-sm-2 control-label">Turma:</label>
                   <div class="col-sm-10">
                     <select required class="form-control" name="rooms_id">
                     <option selected="" disabled="">Selecione</option>
@@ -20,7 +19,6 @@
                     <?php endforeach; ?>
                     </select>
                   </div>
-
                 </div>
                 <div class="form-group">
                   <label for="subject" class="col-sm-2 control-label">Assunto:</label>

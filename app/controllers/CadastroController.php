@@ -24,10 +24,6 @@ class CadastroController extends \HXPHP\System\Controller{
     }
   }
 
-  public function indexAction(){
-    $this->view->setFile('usuario');
-  }
-
   public function cadastrarAction(){
 
       $this->view->setFile('usuario');
@@ -54,8 +50,32 @@ class CadastroController extends \HXPHP\System\Controller{
 
   }
   public function turmaAction(){
+
     $this->view->setFile('turma');
+
     $post = $this->request->post();
+
+    $this->view->setVars([
+      'users' => User::all()
+    ]);
+
+    if(!empty($post)){
+    $cadastroTurma = Room::cadastrarTurma($post);
+
+    if($cadastroTurma->status === false){
+      $this->load('Helpers\Alert', array(
+        'danger',
+        'Por favor, corrija os erros encontrados para efetuar o cadastro!',
+        $cadastroTurma->errors
+      ));
+    }else{
+      $this->load('Helpers\Alert', array(
+          'success',
+          'Cadastro efetuado com sucesso!',
+          $cadastroTurma->errors
+      ));
+    }
+  }
 
   }
 
@@ -79,15 +99,37 @@ class CadastroController extends \HXPHP\System\Controller{
       }else{
         $this->load('Helpers\Alert', array(
             'success',
-            'Cadastro efetuado com sucesso!',
-            $cadastroAtividade->errors
-        ));
+            'Atividade cadastrada com sucesso. <a href="questao" class="btn btn-danger">Clique aqui</a> para adicionar as questões da atividade'
+        ));;
       }
     }
   }
 
   public function questaoAction(){
     $this->view->setFile('questao');
+
+    $this->view->setVars([
+      'activity' => Activity::All()
+    ]);
+
+    $post = $this->request->post();
+
+    if(!empty($post)){
+      $cadastrarQuestao = Question::cadastrarQuestao($post);
+
+      if($cadastrarQuestao->status === false){
+        $this->load('Helpers\Alert', array(
+          'danger',
+          'Por favor, corrija os erros encontrados para efetuar o cadastro!',
+          $cadastrarQuestao->errors
+        ));
+      }else{
+        $this->load('Helpers\Alert', array(
+            'success',
+            'Atividade cadastrada com sucesso.'
+        ));;
+      }
+    }
   }
 
 
