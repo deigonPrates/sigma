@@ -27,9 +27,9 @@ body,html{
 }
 .conteudo{
     color: black;
-    margin-left: 8%;
+    margin-left: 92px;
     margin-top: 5px;
-    height: 82%;
+    height: 595px;
     width: 1158px;
     background-color: #f8f8f8;
 }
@@ -105,7 +105,7 @@ body,html{
 
     nav.sidebar{
       width: 200px;
-      height: 90%;
+      height: 98%;
       margin-left: -160px;
       float: left;
       margin-bottom: 0px;

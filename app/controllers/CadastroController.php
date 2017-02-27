@@ -129,7 +129,7 @@ class CadastroController extends \HXPHP\System\Controller{
       }else{
         $this->load('Helpers\Alert', array(
             'success',
-            'Atividade cadastrada com sucesso.'
+            'Questão cadastrada com sucesso. Após cadastrar <strong>TODAS</strong> as questões desejadas clique em <strong>finalizar</strong>. '
         ));;
       }
     }
