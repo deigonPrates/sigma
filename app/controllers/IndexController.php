@@ -12,6 +12,9 @@ class IndexController extends \HXPHP\System\Controller
         );
 
         $this->auth->redirectCheck(true);
+
+        $this->view->setPath('login');
+        $this->view->setFile('index');
     }
 
 }

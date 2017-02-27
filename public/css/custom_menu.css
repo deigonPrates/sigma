@@ -15,6 +15,11 @@ body,html{
   a{
     color: black;
   }
+.btn-sair{
+  margin-left: 75%;
+  position: fixed;
+  padding-top: 1%;
+}
 .rodape{
     margin-top: -5%;
     color: black;
