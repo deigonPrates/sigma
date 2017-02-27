@@ -2,10 +2,8 @@
 
 class LoginAttempt extends \HXPHP\System\Model
 {
-    public static function redistrarTentativas($user_id){
-          self::create(array(
-              'user_id' => $user_id
-          ));
+    public static function redistrarTentativas(array $dados){
+          self::create($dados);
     }
     public static function limparTentativas($user_id){
           self::delete_all(array(

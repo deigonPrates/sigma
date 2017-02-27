@@ -110,7 +110,12 @@ class User  extends \HXPHP\System\Model{
                       }else{
                         $callbackObj->code = 'dados-incorretos';
                       }
-                      LoginAttempt::redistrarTentativas($user->id);
+                      $date = date("d:m:Y ").' as '.date("G:i:s");
+                      $dados = array_merge([
+                        'user_id' => $user->id,
+                        'date' => $date
+                      ]);
+                      LoginAttempt::redistrarTentativas($dados);
                     }
                 }else{
                     $callbackObj->code = 'usuario-bloqueado';

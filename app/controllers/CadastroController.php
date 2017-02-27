@@ -23,7 +23,9 @@ class CadastroController extends \HXPHP\System\Controller{
       }
     }
   }
-
+  public function indexAction(){
+    $this->view->setFile('usuario');
+  }
   public function cadastrarAction(){
 
       $this->view->setFile('usuario');
