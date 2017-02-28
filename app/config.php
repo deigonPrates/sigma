@@ -15,6 +15,20 @@
 
 	$configs->env->development->auth->setURLs('/sistema/home/', '/sistema/login/');
 
+
+	$configs->env->add('production');
+
+  $configs->env->production->baseURI= '/';
+
+  $configs->env->production->database->setConnectionData([
+    'host' => 'localhost',
+    'user' => 'u678426544_root',
+    'password' => 'sq8tKF1uViEiMk>di:',
+    'dbname' => 'u678426544_sigma'
+  ]);
+
+	$configs->env->production->auth->setURLs('/home/', '/login/');
+
 	/*
 		//Globais
 		$configs->title = 'Titulo customizado';

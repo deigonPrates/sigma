@@ -205,4 +205,31 @@ class User  extends \HXPHP\System\Model{
 
     return $callbackObj;
   }
+
+  public static function recuperarSenha(array $post){
+    $callbackObj = new \stdClass();
+    $callbackObj->user = null;
+    $callbackObj->status = FALSE;
+    $callbackObj->code= null;
+
+    $user = self::find_by_registration($post);
+
+    if(!empty($user)){
+
+    $password = \HXPHP\System\Tools::hashHX($post['registration']);
+
+    $callbackObj->user = $user->id;
+    $callbackObj->status = true;
+
+    $user->update_attributes(array(
+      'password' => $password['password'],
+      'salt' => $password['salt']
+    ));
+  }else{
+    $callbackObj->code = 'matricula-invalida';
+  }
+
+    return $callbackObj;
+
+  }
 }

@@ -23,4 +23,27 @@ class RecuperarController extends \HXPHP\System\Controller{
               }
           }
    }
+
+
+   public function senhaAction(){
+
+     $this->view->setFile('index');
+     $post = $this->request->post();
+     if(!empty($post)){
+       $redefinir = User::recuperarSenha($post);
+
+       if($redefinir->status === false){
+         $this->load('Modules\Messages', 'auth');
+         $this->messages->setBlock('alerts');
+         $errors = $this->messages->getByCode($redefinir->code);
+
+         $this->load('Helpers\Alert', $errors);
+       }else{
+         $this->load('Helpers\Alert', array(
+             'success',
+             'Redefinição realizada com sucesso!'
+         ));
+       }
+     }
+   }
 }

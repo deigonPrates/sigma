@@ -32,11 +32,12 @@ body,html{
 }
 .conteudo{
     color: black;
-    margin-left: 92px;
-    margin-top: 5px;
-    height: 595px;
-    width: 1158px;
+    margin-left: 100px;
+    margin-top: 14px;
+    height: 589px;
+    width: 1139px;
     background-color: #f8f8f8;
+    border-radius: 27px;
 }
   .logo-sigma{
     background-color: #f8f8f8;
