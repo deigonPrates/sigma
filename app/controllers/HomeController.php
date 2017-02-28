@@ -11,6 +11,7 @@ class HomeController extends \HXPHP\System\Controller{
         true
     );
 
+    $this->view->setTitle('SIGMA - Inicio');
     $this->auth->redirectCheck(false);
 
     $role_id = User::find($this->auth->getUserId());

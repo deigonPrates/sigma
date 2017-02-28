@@ -12,7 +12,7 @@ class RecuperarController extends \HXPHP\System\Controller{
       true
       );
 
-
+      $this->view->setTitle('SIGMA - Recuperar');
           $role_id = User::find($this->auth->getUserId());
 
             if(!empty($role_id->role_id)){

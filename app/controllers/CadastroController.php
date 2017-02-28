@@ -11,6 +11,7 @@ class CadastroController extends \HXPHP\System\Controller{
         true
     );
 
+    $this->view->setTitle('SIGMA - Cadastro');
     $this->auth->redirectCheck(false);
 
 

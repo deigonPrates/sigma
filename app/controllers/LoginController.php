@@ -10,6 +10,8 @@ class LoginController extends \HXPHP\System\Controller{
       $configs->auth->after_logout,
       true
     );
+
+    $this->view->setTitle('SIGMA - login');
   }
 
   public function indexAction(){

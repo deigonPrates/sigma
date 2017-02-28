@@ -10,7 +10,8 @@ class EditarController extends \HXPHP\System\Controller{
           $configs->auth->after_logout,
           true
       );
-
+      $this->view->setTitle('SIGMA - Editar');
+      
       $this->auth->redirectCheck(false);
       $this->view->setVars([
           'users' => User::all($this->auth->getUserId())

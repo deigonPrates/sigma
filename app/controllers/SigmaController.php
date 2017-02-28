@@ -10,7 +10,7 @@ class SigmaController extends \HXPHP\System\Controller{
         $configs->auth->after_logout,
         true
     );
-
+    $this->view->setTitle('SIGMA - Gerenciamento');
     $this->auth->redirectCheck(false);
     $this->view->setFile('listar');
 
