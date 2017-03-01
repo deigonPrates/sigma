@@ -1,9 +1,9 @@
 <div class="panel-body conteudo">
 <div class="conteiner form-group">
-		<h3><p class="text-center">Recupere a sua senha Esquecida</p></h3><br>
+		<h3><p class="text-center">Recupere a senha</p></h3><br>
 </div>
 <div class="conteiner form-group">
-    <div class="col-md-7 col-md-offset-3">
+    <div class="col-md-5 col-md-offset-3">
               <?php echo (isset($this->alert) ? $this->alert : ''); ?>
               <div class="alert alert-block alert-warning">
                   <h4>Informe a matricula que deseja recuperar</4>
@@ -12,7 +12,7 @@
               <form action="<?php echo BASE; ?>recuperar/senha" class="form-horizontal" method="post">
                 <div class="form-group">
                   <label for="registration" class="col-sm-4 control-label">Matricula:</label>
-                  <div class="col-sm-8">
+                  <div class="col-sm-5">
                     <input type="text" class="form-control" name="registration" id="registration" value="<?php echo $this->request->post('registration') ?>" placeholder="1234567890">
                   </div>
                 </div>

@@ -31,6 +31,7 @@ class SigmaController extends \HXPHP\System\Controller{
     $this->view->setVars([
         'activity' => Activity::all()
     ]);
+
   }
   public function listarUsuariosAction($user_id = null){
     $this->view->setFile('listar');

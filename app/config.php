@@ -21,7 +21,7 @@
   $configs->env->production->baseURI= '/';
 
   $configs->env->production->database->setConnectionData([
-    'host' => 'localhost',
+    'host' => 'mysql.hostinger.com.br',
     'user' => 'u678426544_root',
     'password' => 'sq8tKF1uViEiMk>di:',
     'dbname' => 'u678426544_sigma'

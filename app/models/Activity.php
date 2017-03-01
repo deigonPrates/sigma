@@ -2,6 +2,12 @@
 
 
 class Activity extends \HXPHP\System\Model{
+
+  static $has_one = array(
+       array('room')
+  );
+
+
   static $validates_presence_of = array(
        array(
              'subject',
@@ -20,7 +26,6 @@ class Activity extends \HXPHP\System\Model{
            'message' => 'O campo <b>Turma</b> é um campo obrigatório!'
        )
   );
-
 
 
   public static function cadastrarAtividade(array $post){

@@ -2,6 +2,7 @@
 
 class Room extends \HXPHP\System\Model
 {
+
   static $validates_presence_of = array(
     array(
           'name',
@@ -14,6 +15,7 @@ class Room extends \HXPHP\System\Model
           'message' => 'O campo <b>Professor</b> é um campo obrigatório!'
     )
   );
+
 
   public static function cadastrarTurma(array $post){
     $callbackObj = new \stdClass;
