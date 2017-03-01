@@ -15,6 +15,8 @@ class IndexController extends \HXPHP\System\Controller
 
         $this->view->setPath('login');
         $this->view->setFile('index');
+
+        $this->view->setTitle('SIGMA - login');
     }
 
 }
