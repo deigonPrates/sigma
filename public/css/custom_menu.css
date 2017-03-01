@@ -15,6 +15,14 @@ body,html{
   a{
     color: black;
   }
+  .btn-buscar{
+      margin-left: 60%;
+      position: fixed;
+  }
+  .btn-paginacao{
+      margin-left: 75%;
+      position: fixed;
+  }
 .btn-sair{
   margin-left: 75%;
   position: fixed;

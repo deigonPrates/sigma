@@ -6,5 +6,22 @@
 			</div>
 		</div>
 	</div>
+	<script>
+        var resizefunc = [];
+    </script>
+
+        <!-- jQuery  -->
+        <script src="<?php echo BOWER; ?>assets/js/jquery.min.js"></script>
+		<script src="<?php echo BOWER; ?>assets/js/fastclick.js"></script>
+		<script src="<?php echo BOWER; ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="<?php echo BOWER; ?>assets/plugins/datatables/dataTables.bootstrap.js"></script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#datatable').dataTable();
+            } );
+        </script>
+
 </body>
 </html>
