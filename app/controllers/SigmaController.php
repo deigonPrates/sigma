@@ -15,91 +15,138 @@ class SigmaController extends \HXPHP\System\Controller{
     $this->view->setFile('listar');
 
 
-        $role_id = User::find($this->auth->getUserId());
+    $check = $this->checkNivel($this->auth->getUserId());
 
-          if(!empty($role_id->role_id)){
-            if($role_id->role_id != 3){
-              $this->view->setHeader('header_admin');
-            }else{
-              $this->view->setHeader('header_aluno');
-            }
+    if($check === true){
+      $this->view->setHeader('header_admin');
+    }else{
+      $this->view->setHeader('header_aluno');
+    }
+
+
+  }
+  /*
+  * function para verificar o nivel de acesso do usuario
+  * caso seja admim  return true caso não return false
+  */
+  public function checkNivel($user_id){
+    $role_id = User::find($this->auth->getUserId());
+
+      if(!empty($role_id->role_id)){
+        if($role_id->role_id != 3){
+            return true;
+        }else{
+            return false;
         }
+      }
 
   }
   public function listarAtividadeAction($user_id = null){
-    $this->view->setFile('listarAtividades');
-    $this->view->setVars([
-        'activity' => Activity::all()
-    ]);
 
+    $check = $this->checkNivel($this->auth->getUserId());
+
+    if($check === true){
+      $this->view->setTitle('SIGMA - Atividades');
+      $this->view->setFile('listarAtividades');
+      $this->view->setVars([
+          'activity' => Activity::all()
+      ]);
+    }
 
   }
   public function listarUsuariosAction($user_id = null){
-    $this->view->setFile('listar');
-    $this->view->setVars([
-        'users' => User::all()
-    ]);
+    $check = $this->checkNivel($this->auth->getUserId());
+
+    if($check === true){
+      $this->view->setTitle('SIGMA - Usuários');
+      $this->view->setFile('listar');
+      $this->view->setVars([
+          'users' => User::all()
+      ]);
+    }
   }
   public function bloquearAction($user_id = null){
-		if (is_numeric($user_id)) {
-			$user = User::find_by_id($user_id);
-			if (!is_null($user)) {
-				$user->status = 0;
-				$user->save(false);
-				$this->view->setVar('users', User::all());
-			}
-		}
+    $check = $this->checkNivel($this->auth->getUserId());
+
+    if($check === true){
+  		if (is_numeric($user_id)) {
+  			$user = User::find_by_id($user_id);
+  			if (!is_null($user)) {
+  				$user->status = 0;
+  				$user->save(false);
+  				$this->view->setVar('users', User::all());
+  			}
+  		}
+    }
 	}
 	public function desbloquearAction($user_id = null){
-		if (is_numeric($user_id)) {
-			$user = User::find_by_id($user_id);
-			if (!is_null($user)) {
-				$user->status = 1;
-				$user->save(false);
-				$this->view->setVar('users', User::all());
-			}
-		}
+    $check = $this->checkNivel($this->auth->getUserId());
+
+    if($check === true){
+      if (is_numeric($user_id)) {
+  			$user = User::find_by_id($user_id);
+  			if (!is_null($user)) {
+  				$user->status = 1;
+  				$user->save(false);
+  				$this->view->setVar('users', User::all());
+  			}
+  		}
+    }
 	}
   public function bloquearAtividadeAction($activity_id = null){
-		if (is_numeric($activity_id)) {
-			$activity = Activity::find_by_id($activity_id);
-			if (!is_null($activity)) {
-				$activity->status = 0;
-				$activity->save(false);
-				$this->view->setVar('activity', Activity::all());
-        $this->view->setFile('listarAtividades');
-			}
-		}
+    $check = $this->checkNivel($this->auth->getUserId());
+
+    if($check === true){
+        if (is_numeric($activity_id)) {
+  			   $activity = Activity::find_by_id($activity_id);
+        			if (!is_null($activity)) {
+          				$activity->status = 0;
+          				$activity->save(false);
+          				$this->view->setVar('activity', Activity::all());
+                  $this->view->setFile('listarAtividades');
+        			}
+  		 }
+    }
 	}
 	public function desbloquearAtividadeAction($activity_id = null){
-		if (is_numeric($activity_id)) {
-			$activity = Activity::find_by_id($activity_id);
-			if (!is_null($activity)) {
-				$activity->status = 1;
-				$activity->save(false);
-				$this->view->setVar('activity', Activity::all());
-          $this->view->setFile('listarAtividades');
-			}
-		}
+    $check = $this->checkNivel($this->auth->getUserId());
+
+    if($check === true){
+      if (is_numeric($activity_id)) {
+  			$activity = Activity::find_by_id($activity_id);
+  			if (!is_null($activity)) {
+  				$activity->status = 1;
+  				$activity->save(false);
+  				$this->view->setVar('activity', Activity::all());
+            $this->view->setFile('listarAtividades');
+  			}
+  		}
+    }
 	}
 	public function excluirAction($user_id = null){
-		if (is_numeric($user_id)) {
-			$user = User::find_by_id($user_id);
-			if (!is_null($user)) {
-				$user->delete();
-				$this->view->setVar('users', User::all());
-			}
-		}
+    $check = $this->checkNivel($this->auth->getUserId());
 
+    if($check === true){
+      if (is_numeric($user_id)) {
+  			$user = User::find_by_id($user_id);
+  			if (!is_null($user)) {
+  				$user->delete();
+  				$this->view->setVar('users', User::all());
+  			}
+  		}
+    }
   }
 
   public function RDAtividadeAction(){
-    $this->view->setFile('RDAtividade');
+    $check = $this->checkNivel($this->auth->getUserId());
 
-    $this->view->setVars([
-        'activity' => Activity::all()
-    ]);
+    if($check === true){
+      $this->view->setFile('RDAtividade');
 
+      $this->view->setVars([
+          'activity' => Activity::all()
+      ]);
+    }
   }
 
   public function visualizarAtividade($user_id = null){
@@ -107,11 +154,15 @@ class SigmaController extends \HXPHP\System\Controller{
   }
 
   public function RDAlunoAction(){
-    $this->view->setFile('RDAluno');
+    $check = $this->checkNivel($this->auth->getUserId());
 
-    $this->view->setVars([
-        'users' => User::all()
-    ]);
+    if($check === true){
+      $this->view->setFile('RDAluno');
+
+      $this->view->setVars([
+          'users' => User::all()
+      ]);
+    }
   }
   public function visualizarAluno($user_id = null){
     echo 'cu';
