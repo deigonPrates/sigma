@@ -32,6 +32,7 @@ class SigmaController extends \HXPHP\System\Controller{
         'activity' => Activity::all()
     ]);
 
+
   }
   public function listarUsuariosAction($user_id = null){
     $this->view->setFile('listar');
@@ -90,6 +91,30 @@ class SigmaController extends \HXPHP\System\Controller{
 			}
 		}
 
+  }
+
+  public function RDAtividadeAction(){
+    $this->view->setFile('RDAtividade');
+
+    $this->view->setVars([
+        'activity' => Activity::all()
+    ]);
+
+  }
+
+  public function visualizarAtividade($user_id = null){
+    echo 'cu';
+  }
+
+  public function RDAlunoAction(){
+    $this->view->setFile('RDAluno');
+
+    $this->view->setVars([
+        'users' => User::all()
+    ]);
+  }
+  public function visualizarAluno($user_id = null){
+    echo 'cu';
   }
 
 }
