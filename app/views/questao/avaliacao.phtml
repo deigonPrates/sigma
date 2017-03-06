@@ -11,14 +11,12 @@
                       $num_questao=0;
                         foreach ($view_question as $key) {
                             echo $num_questao. ') '. $key->query.'<br>';
-
-                            echo 'a) '. $key->alternative_a.'<br>';
-                            echo 'b) '. $key->alternative_b.'<br>';
-                            echo 'c) '. $key->alternative_c.'<br>';
-                            echo 'd) '. $key->alternative_d.'<br>';
-                            echo 'e) '. $key->alternative_e.'<br>';
-
-                            $num_questao++;
+														echo "<label><input type='radio' name='a'> a). $key->alternative_a</label>".'<br>';
+														echo "<label><input type='radio' name='b'> b). $key->alternative_b</label>".'<br>';
+														echo "<label><input type='radio' name='c'> c). $key->alternative_c</label>".'<br>';
+														echo "<label><input type='radio' name='d'> d). $key->alternative_d</label>".'<br>';
+														echo "<label><input type='radio' name='e'> e). $key->alternative_e</label>".'<br>';
+                          $num_questao++;
                         }
                      ?>
                 </div>

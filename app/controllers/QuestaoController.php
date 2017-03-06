@@ -45,5 +45,12 @@ class QuestaoController extends \HXPHP\System\Controller{
 
   }
 
+  public function visualizarAtividadeAction($activity_id = null){
+    $this->view->setFile('listarAtividades');
+    $this->view->setVars([
+      'activity' => Activity::all()
+    ]);
+  }
+
 
 }
