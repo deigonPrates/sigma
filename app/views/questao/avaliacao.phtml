@@ -1,0 +1,33 @@
+<div class="panel-body conteudo">
+<div class="conteiner form-group">
+		<h3><p class="text-center">Atividade Avaliativa</p></h3><br>
+</div>
+<div class="conteiner form-group">
+    <div class="col-md-7 col-md-offset-3">
+              <?php echo (isset($this->alert) ? $this->alert : ''); ?>
+              <form action="<?php echo BASE . 'questao/atividade' ?>" class="form-horizontal" method="post">
+                <div class="form-group">
+                    <?php
+                      $num_questao=0;
+                        foreach ($view_question as $key) {
+                            echo $num_questao. ') '. $key->query.'<br>';
+
+                            echo 'a) '. $key->alternative_a.'<br>';
+                            echo 'b) '. $key->alternative_b.'<br>';
+                            echo 'c) '. $key->alternative_c.'<br>';
+                            echo 'd) '. $key->alternative_d.'<br>';
+                            echo 'e) '. $key->alternative_e.'<br>';
+
+                            $num_questao++;
+                        }
+                     ?>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Responder</button>
+                    <a href="<?php echo BASE;?>home" class="btn btn-danger">Canselar</a>
+                  </div>
+                </div>
+                </form>
+            </div>
+        </div>

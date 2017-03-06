@@ -1,0 +1,30 @@
+<div class="panel-body conteudo">
+<div class="conteiner form-group">
+		<h3><p class="text-center">Definir atividade</p></h3><br>
+</div>
+<div class="conteiner form-group">
+    <div class="col-md-7 col-md-offset-3">
+              <?php echo (isset($this->alert) ? $this->alert : ''); ?>
+              <form action="<?php echo BASE . 'questao/atividade' ?>" class="form-horizontal" method="post">
+                <div class="form-group">
+                  <label for="room" name="room" class="col-sm-2 control-label">Atividade:</label>
+                  <div class="col-sm-10">
+                    <select required class="form-control" name="activities_id">
+                    <option selected="" disabled="">Selecione</option>
+                    <?php foreach ($view_activity as $key):
+                              if($key->status === 1): ?>
+                                  <option value="<?php echo($key->id);?>"><?php echo($key->subject.' data: '.$key->date);?></option>
+                    <?php     endif;
+                          endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Fazer</button>
+                    <a href="<?php echo BASE;?>home" class="btn btn-danger">Canselar</a>
+                  </div>
+                </div>
+                </form>
+            </div>
+        </div>
