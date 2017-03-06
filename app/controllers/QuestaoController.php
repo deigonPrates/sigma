@@ -37,12 +37,22 @@ class QuestaoController extends \HXPHP\System\Controller{
       'activity' => Activity::all(),
       'question' => Question::All()
     ]);
+  }
+
+  public function avaliacaoAction(){
     $post = $this->request->post();
-
     if(!empty($post)){
-      $this->view->setFile('avaliacao');
+      $this->view->setVars([
+        'activity' => $post,
+        'question' => Question::All()
+      ]);
+    }else{
+      $this->load('Helpers\Alert', array(
+          'danger',
+          'Nenhuma avaliação definida. Por favor tente novamente!<br>
+          <h6>Clique em fazer atividade no menu ao lado e defina uma avaliação....</h6>'
+      ));
     }
-
   }
 
   public function visualizarAtividadeAction($activity_id = null){
