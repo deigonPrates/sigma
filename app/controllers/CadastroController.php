@@ -63,7 +63,12 @@ class CadastroController extends \HXPHP\System\Controller{
       'users' => User::all()
     ]);
 
+
     if(!empty($post)){
+
+    $post = array_merge($post,[
+      'status'=> 1
+    ]);
     $cadastroTurma = Room::cadastrarTurma($post);
 
     if($cadastroTurma->status === false){
@@ -133,6 +138,32 @@ class CadastroController extends \HXPHP\System\Controller{
             'Questão cadastrada com sucesso. Após cadastrar <strong>TODAS</strong> as questões desejadas clique em <strong>finalizar</strong>. '
         ));;
       }
+    }
+  }
+  public function AlunoTurmaAction(){
+    $this->view->setFile('alunoTurma');
+    $this->view->setVars([
+      'room' => Room::all()
+    ]);
+
+
+    $post = $this->request->post();
+
+    if(!empty($post)){
+      $cadastrar = RoomsUsers::registrarRoomUsers($post);
+
+        if($cadastrar->status === false){
+          $this->load('Helpers\Alert', array(
+            'danger',
+            'Por favor, corrija os erros encontrados para efetuar o registro!',
+            $cadastrar->errors
+          ));
+        }else{
+          $this->load('Helpers\Alert', array(
+              'success',
+              'Aluno registrado na turma com sucesso!'
+          ));;
+        }
     }
   }
 

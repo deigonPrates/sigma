@@ -22,7 +22,7 @@ class Activity extends \HXPHP\System\Model{
            'message' => 'O campo <b>Data</b> é um campo obrigatório!'
        ),
        array(
-           'rooms_id',
+           'room_id',
            'message' => 'O campo <b>Turma</b> é um campo obrigatório!'
        )
   );

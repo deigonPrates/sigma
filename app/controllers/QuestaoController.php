@@ -34,18 +34,18 @@ class QuestaoController extends \HXPHP\System\Controller{
   public function atividadeAction(){
     $this->view->setFile('index');
     $this->view->setVars([
-      'activity' => Activity::all(),
-      'question' => Question::All()
+      'activity' => Activity::all()
     ]);
   }
 
-  public function avaliacaoAction(){
+  public function validacaoAction(){
     $post = $this->request->post();
     if(!empty($post)){
       $this->view->setVars([
         'activity' => $post,
         'question' => Question::All()
       ]);
+      $this->view->setFile('avaliacao');
     }else{
       $this->load('Helpers\Alert', array(
           'danger',
@@ -53,6 +53,33 @@ class QuestaoController extends \HXPHP\System\Controller{
           <h6>Clique em fazer atividade no menu ao lado e defina uma avaliação....</h6>'
       ));
     }
+  }
+  public function gravarespostaAvaliacaoAction(){
+    $post = $this->request->post();
+
+    $teste = User::teste();
+
+
+      /*
+    $this->view->setFile('avaliacao');
+    var_dump($question_id);
+    if(!empty($post) && (!is_null($question_id))){
+      $post = array_merge($post,[
+        'user_id' => $this->auth->getUserId(),
+        'question_id' => $question_id
+      ]);
+
+      var_dump($post);
+      # $respostaAvaliacao = Answers::salvarResposta($post);
+
+      if($respostaAvaliacao->status === false){
+        $this->load('Helpers\Alert', array(
+          'danger',
+          'Por favor, corrija os erros encontrados!',
+          $respostaAvaliacao->errors
+        ));
+      }
+    }*/
   }
 
   public function visualizarAtividadeAction($activity_id = null){

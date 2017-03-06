@@ -106,18 +106,18 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `emcac`.`rooms_users` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `rooms_id` INT NOT NULL,
-  `users_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `rooms_id`, `users_id`),
-  INDEX `fk_classes_has_users_users1_idx` (`users_id` ASC),
-  INDEX `fk_classes_has_users_classes1_idx` (`rooms_id` ASC),
+  `room_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `room_id`, `user_id`),
+  INDEX `fk_classes_has_users_users1_idx` (`user_id` ASC),
+  INDEX `fk_classes_has_users_classes1_idx` (`room_id` ASC),
   CONSTRAINT `fk_classes_has_users_classes1`
-    FOREIGN KEY (`rooms_id`)
+    FOREIGN KEY (`room_id`)
     REFERENCES `emcac`.`rooms` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_classes_has_users_users1`
-    FOREIGN KEY (`users_id`)
+    FOREIGN KEY (`user_id`)
     REFERENCES `emcac`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -133,11 +133,11 @@ CREATE TABLE IF NOT EXISTS `emcac`.`activities` (
   `value` FLOAT NOT NULL,
   `date` DATE NOT NULL,
   `status` INT(1) NOT NULL DEFAULT 1,
-  `rooms_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `rooms_id`),
-  INDEX `fk_activities_classes1_idx` (`rooms_id` ASC),
+  `room_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `room_id`),
+  INDEX `fk_activities_classes1_idx` (`room_id` ASC),
   CONSTRAINT `fk_activities_classes1`
-    FOREIGN KEY (`rooms_id`)
+    FOREIGN KEY (`room_id`)
     REFERENCES `emcac`.`rooms` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -149,7 +149,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `emcac`.`questions` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `activities_id` INT NOT NULL,
+  `activity_id` INT NOT NULL,
   `number` INT NOT NULL,
   `query` VARCHAR(250) NOT NULL,
   `alternative_a` VARCHAR(250) NOT NULL,
@@ -159,10 +159,10 @@ CREATE TABLE IF NOT EXISTS `emcac`.`questions` (
   `alternative_e` VARCHAR(250) NOT NULL,
   `answer` CHAR(1) NOT NULL,
   `value` FLOAT NOT NULL,
-  PRIMARY KEY (`id`, `activities_id`),
-  INDEX `fk_questions_activities1_idx` (`activities_id` ASC),
+  PRIMARY KEY (`id`, `activity_id`),
+  INDEX `fk_questions_activities1_idx` (`activity_id` ASC),
   CONSTRAINT `fk_questions_activities1`
-    FOREIGN KEY (`activities_id`)
+    FOREIGN KEY (`activity_id`)
     REFERENCES `emcac`.`activities` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

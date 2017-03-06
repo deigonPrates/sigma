@@ -1,6 +1,9 @@
 <?php
 
 class User  extends \HXPHP\System\Model{
+    static $belongs_to = array(
+      array('role')
+    );
 
      static $validates_presence_of = array(
           array(
@@ -231,5 +234,10 @@ class User  extends \HXPHP\System\Model{
 
     return $callbackObj;
 
+  }
+
+  public static function teste(){
+      $teste = self::first();
+      var_dump($teste->role->role);
   }
 }

@@ -5,21 +5,21 @@
 <div class="conteiner form-group">
     <div class="col-md-7 col-md-offset-3">
               <?php echo (isset($this->alert) ? $this->alert : ''); ?>
-              <form action="<?php echo BASE . 'questao/avaliacao' ?>" class="form-horizontal" method="post">
+              <form action="<?php echo BASE . 'questao/gravarespostaAvaliacao'?>" class="form-horizontal" method="post">
                 <div class="form-group">
                     <?php
                       $num_questao=1;
 											if(!empty($view_question)):
                         foreach ($view_question as $key):
-													if($key->activities_id == $view_activity['activities_id']):
+													if($key->activity_id == $view_activity['activity_id']):
                             echo $num_questao. ') '. $key->query.'<br>';
-														echo "<label><input type='radio' name='alternative' value='a'> a). $key->alternative_a</label>".'<br>';
-														echo "<label><input type='radio' name='alternative' value='b'> b). $key->alternative_b</label>".'<br>';
-														echo "<label><input type='radio' name='alternative' value='c'> c). $key->alternative_c</label>".'<br>';
-														echo "<label><input type='radio' name='alternative' value='d'> d). $key->alternative_d</label>".'<br>';
-														echo "<label><input type='radio' name='alternative' value='e'> e). $key->alternative_e</label>".'<br>';
-                          $num_questao++;
-												endif;
+														echo "<label><input type='radio' name='a' value='a.$key->id'> a). $key->alternative_a</label>".'<br>';
+														echo "<label><input type='radio' name='a' value='b.$key->id'> b). $key->alternative_b</label>".'<br>';
+														echo "<label><input type='radio' name='a' value='c.$key->id'> c). $key->alternative_c</label>".'<br>';
+														echo "<label><input type='radio' name='a' value='d.$key->id'> d). $key->alternative_d</label>".'<br>';
+														echo "<label><input type='radio' name='a' value='e.$key->id'> e). $key->alternative_e</label>".'<br>';
+                          	$num_questao++;
+													endif;
                         endforeach;
                      ?>
                 </div>

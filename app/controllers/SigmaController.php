@@ -167,5 +167,43 @@ class SigmaController extends \HXPHP\System\Controller{
   public function visualizarAluno($user_id = null){
     echo 'cu';
   }
+  public function listarTurmaAction(){
+    $this->view->setVars([
+      'room' => Room::all()
+    ]);
+    $this->view->setFile('listarTurma');
+
+  }
+
+  public function bloquearTurmaAction($room_id = null){
+    $check = $this->checkNivel($this->auth->getUserId());
+
+    if($check === true){
+      if (is_numeric($room_id)) {
+        $room = Room::find_by_id($room_id);
+        if (!is_null($room)) {
+          $room->status = 0;
+          $room->save(false);
+          $this->view->setVar('room', Room::all());
+          $this->view->setFile('listarTurma');
+        }
+      }
+    }
+  }
+  public function desbloquearTurmaAction($room_id = null){
+    $check = $this->checkNivel($this->auth->getUserId());
+
+    if($check === true){
+      if (is_numeric($room_id)) {
+        $room = Room::find_by_id($room_id);
+        if (!is_null($room)) {
+          $room->status = 1;
+          $room->save(false);
+          $this->view->setVar('room', Room::all());
+          $this->view->setFile('listarTurma');
+        }
+      }
+    }
+  }
 
 }
