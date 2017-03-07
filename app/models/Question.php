@@ -37,10 +37,10 @@ class Question extends \HXPHP\System\Model{
     $callbackObj->user = null;
     $callbackObj->status = false;
     $callbackObj->errors = array();
-
     $cadastrarQuestao = self::create($post);
 
     if($cadastrarQuestao->is_valid()){
+        $num_questao++;
         $callbackObj->user = $cadastrarQuestao;
         $callbackObj->status = true;
 
