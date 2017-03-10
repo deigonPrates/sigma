@@ -206,8 +206,14 @@ class SigmaController extends \HXPHP\System\Controller{
     }
   }
   public function visualizarRDAtividadeAction($activity_id = null){
+    $post = $this->request->post();
     $this->view->setHeader('header_sigma');
     $this->view->setFile('visualizarRDAtividade');
+
+    $this->view->setVars([
+      'tipo' => $post
+    ]);
+    
   }
 
 }

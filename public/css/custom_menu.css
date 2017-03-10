@@ -1,7 +1,7 @@
 body,html{
     height: 100%;
     background-color: #B5BFC9 !important;
-    font-family: 'Oswald', sans-serif!important;
+    /*font-family: 'Oswald', sans-serif!important;*/
 
   }
   ul.nav li.dropdown:hover ul.dropdown-menu
@@ -14,6 +14,12 @@ body,html{
       -moz-transition: margin 200ms ease-out;
       -o-transition: margin 200ms ease-out;
       transition: margin 200ms ease-out;
+  }
+  .visualizar{
+    height:440px!important;
+    width:650px!important;
+    margin-left: 180px!important ;
+    margin-top: -540px!important;
   }
   a{
     color: black;
@@ -43,10 +49,10 @@ body,html{
 }
 .conteudo{
     color: black;
-    margin-left: 100px;
-    margin-top: 14px;
-    height: 589px;
-    width: 1139px;
+    margin-left: 9%;
+    margin-top: 11px;
+    height: 577px;
+    width: 99%;
     background-color: #f8f8f8;
     border-radius: 27px;
 }

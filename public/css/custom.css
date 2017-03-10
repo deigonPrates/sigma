@@ -8,6 +8,12 @@
     padding: 1%;
     color: #f7f7f7;
 }
+.visualizar{
+  height:74px!important;
+  width:253px!important;
+  margin-top: -150px!important;
+  background-color: black!important;
+}
 .container_menu {
     padding: 10px;
     padding-top: 10px;
