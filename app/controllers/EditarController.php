@@ -100,8 +100,14 @@ class EditarController extends \HXPHP\System\Controller{
     public function atividadeAction(){
       $this->view->setPath('cadastro');
       $this->view->setFile('questao');
+      $contador = (!empty($this->request->post('number'))) ? $this->request->post('number') : 1;
+      if($contador != 1){
+        $contador++;
+      }
+
       $this->view->setVars([
-        'activity' => Activity::all()
+        'activity' => Activity::All(),
+        'contador' => $contador
       ]);
     }
 }

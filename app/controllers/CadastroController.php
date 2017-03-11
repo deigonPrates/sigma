@@ -113,12 +113,17 @@ class CadastroController extends \HXPHP\System\Controller{
       }
     }
   }
-
   public function questaoAction(){
+
     $this->view->setFile('questao');
 
+    $contador = (!empty($this->request->post('number'))) ? $this->request->post('number') : 0;
+
+    $contador += 1;
+
     $this->view->setVars([
-      'activity' => Activity::All()
+      'activity' => Activity::All(),
+      'contador' => $contador
     ]);
 
     $post = $this->request->post();

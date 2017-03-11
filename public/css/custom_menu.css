@@ -15,6 +15,7 @@ body,html{
       -o-transition: margin 200ms ease-out;
       transition: margin 200ms ease-out;
   }
+
   .visualizar{
     height:400px!important;
     width:770px!important;
@@ -52,10 +53,18 @@ body,html{
     color: black;
     margin-left: 9%;
     margin-top: 11px;
-    height: 589px;
+    height: 103%;
     width: 99%;
     background-color: #f8f8f8;
     border-radius: 27px;
+}
+.flutuante{
+    width:267px;
+    height:113px;
+    position:absolute;
+    z-index:100;
+    top:23%;
+    left:-276px;
 }
   .logo-sigma{
     background-color: #f8f8f8;

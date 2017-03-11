@@ -40,7 +40,6 @@ class Question extends \HXPHP\System\Model{
     $cadastrarQuestao = self::create($post);
 
     if($cadastrarQuestao->is_valid()){
-        $num_questao++;
         $callbackObj->user = $cadastrarQuestao;
         $callbackObj->status = true;
 

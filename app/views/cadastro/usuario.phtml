@@ -4,7 +4,9 @@
 </div>
 <div class="conteiner form-group">
     <div class="col-md-7 col-md-offset-3">
-                <?php echo (isset($this->alert) ? $this->alert : '')?>
+					<div class="flutuante">
+              <?php echo (isset($this->alert) ? $this->alert : '');?>
+						</div>
               <form action="<?php echo BASE; ?>cadastro/cadastrar" class="form-horizontal" method="post">
 								<div class="form-group">
                   <label for="room" name="room" class="col-sm-2 control-label">Usuário:</label>

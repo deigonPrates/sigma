@@ -15,6 +15,9 @@ class HomeController extends \HXPHP\System\Controller{
     $this->auth->redirectCheck(false);
 
     $role_id = User::find($this->auth->getUserId());
+    $this->view->setVars([
+      'user' => User::find($this->auth->getUserId())
+    ]);
 
       if(!empty($role_id->role_id)){
         if($role_id->role_id != 3){
