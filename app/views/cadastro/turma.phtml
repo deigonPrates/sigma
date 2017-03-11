@@ -24,7 +24,7 @@
                       <select required class="form-control" name="teacher">
                       <option selected="" disabled="">Selecione</option>
                       <?php foreach($view_users as $key):
-                                if($key->role_id === 2):?>
+                                if(($key->role_id === 2) &&($key->status === 1)):?>
                                   <option value="<?php echo($key->name);?>"><?php echo($key->name); ?></option>
                         <?php endif;
                             endforeach; ?>

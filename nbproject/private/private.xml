@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/sistema/app/models/User.php</file>
-            <file>file:/C:/wamp64/www/sistema/app/controllers/CadastroController.php</file>
-            <file>file:/C:/wamp64/www/sistema/app/views/header.phtml</file>
+            <file>file:/C:/wamp64/www/sistema/public/bower_components/bootstrap/dist/css/newcss.css</file>
             <file>file:/C:/wamp64/www/sistema/app/controllers/EditarController.php</file>
+            <file>file:/C:/wamp64/www/sistema/app/models/User.php</file>
+            <file>file:/C:/wamp64/www/sistema/public/bower_components/bootstrap/dist/css/bootstrap.min.css</file>
+            <file>file:/C:/wamp64/www/sistema/app/views/header.phtml</file>
+            <file>file:/C:/wamp64/www/sistema/app/controllers/CadastroController.php</file>
         </group>
     </open-files>
 </project-private>

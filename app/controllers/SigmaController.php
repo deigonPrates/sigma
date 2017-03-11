@@ -213,7 +213,15 @@ class SigmaController extends \HXPHP\System\Controller{
     $this->view->setVars([
       'tipo' => $post
     ]);
-    
+  }
+  public function visualizarRDAlunoAction($activity_id = null){
+    $post = $this->request->post();
+    $this->view->setHeader('header_sigma');
+    $this->view->setFile('visualizarRDAluno');
+
+    $this->view->setVars([
+      'tipo' => $post
+    ]);
   }
 
 }

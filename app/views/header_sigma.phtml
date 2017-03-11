@@ -48,6 +48,34 @@
  	//metodo chamado após o carregamento
  	 google.setOnLoadCallback(drawChart);
      </script>
+		 <script type="text/javascript">
+		google.load("visualization", "1", {packages:["corechart"]});
+		google.setOnLoadCallback(drawChart);
+		function drawChart() {
+	//montando o array com os dados
+			var data = google.visualization.arrayToDataTable([
+				['questão', 'Acertos', 'Erros'],
+				['1',  6,      4],
+				['2',  11,      4],
+				['3',  6,       11],
+				['4',  11,      4],
+				['5',  6,       11],
+				['6',  10,      5],
+				['7',  11,      4],
+				['8',  6,       11],
+				['9',  10,      5]
+			]);
+	//opçoes para o gráfico barras
+			var options = {
+				title: 'Performance',
+				vAxis: {title: 'Questões',  titleTextStyle: {color: 'black'}}//legenda vertical
+			};
+	//instanciando e desenhando o gráfico barras
+			var barras = new google.visualization.BarChart(document.getElementById('barras'));
+			barras.draw(data, options);
+
+		}
+	</script>
 </head>
 <body>
 	<nav class="navbar navbar-default sidebar" role="navigation">
@@ -92,9 +120,6 @@
             <li class="divider"></li>
             <li><a href="<?php echo BASE; ?>sigma/RDAtividade">R.D. por atividade</a></li>
             <li><a href="<?php echo BASE; ?>sigma/RDAluno">R.D. por aluno</a></li>
-            <li><a href="#">R.D. por turma</a></li>
-            <li><a href="#">R.D. por unidade</a></li>
-            <li><a href="#">R.D. por ano</a></li>
           </ul>
         </li>
         </ul>

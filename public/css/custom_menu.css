@@ -16,10 +16,10 @@ body,html{
       transition: margin 200ms ease-out;
   }
   .visualizar{
-    height:440px!important;
-    width:650px!important;
-    margin-left: 180px!important ;
-    margin-top: -540px!important;
+    height:400px!important;
+    width:770px!important;
+    margin-left: 140px!important ;
+    margin-top: -450px!important;
   }
   a{
     color: black;
@@ -51,7 +51,7 @@ body,html{
     color: black;
     margin-left: 9%;
     margin-top: 11px;
-    height: 577px;
+    height: 589px;
     width: 99%;
     background-color: #f8f8f8;
     border-radius: 27px;

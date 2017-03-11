@@ -23,7 +23,7 @@
   $configs->env->production->database->setConnectionData([
     'host' => 'mysql.hostinger.com.br',
     'user' => 'u678426544_root',
-    'password' => 'sq8tKF1uViEiMk>di:',
+    'password' => '$|O@1g#BR/m&9hy&Z&',
     'dbname' => 'u678426544_sigma'
   ]);
 
