@@ -38,6 +38,7 @@ body,html{
   padding-top: 1%;
 }
 .rodape{
+    padding-top: 2%!important;
     margin-top: -5%;
     color: black;
 }
