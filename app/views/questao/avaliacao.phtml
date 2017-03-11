@@ -13,25 +13,33 @@
                         foreach ($view_question as $key):
 													if($key->number === $view_contador):
 															if($key->activity_id == $view_activity['activity_id']):
-		                            echo $num_questao. ') '. $key->query.'<br>';
+		                            echo $view_contador. ') '. $key->query.'<br>';
+																$num_questao++;
 																echo "<label><input type='radio' name='alternative' value='a.$key->id'> a). $key->alternative_a</label>".'<br>';
 																echo "<label><input type='radio' name='alternative' value='b.$key->id'> b). $key->alternative_b</label>".'<br>';
 																echo "<label><input type='radio' name='alternative' value='c.$key->id'> c). $key->alternative_c</label>".'<br>';
 																echo "<label><input type='radio' name='alternative' value='d.$key->id'> d). $key->alternative_d</label>".'<br>';
 																echo "<label><input type='radio' name='alternative' value='e.$key->id'> e). $key->alternative_e</label>".'<br>';
-		                          	$num_questao++;
-															endif;
+		                          endif;
 													endif;
                         endforeach;
                      ?>
                 </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-success">Responder</button>
-                    <a href="<?php echo BASE;?>questao/destruirSession" class="btn btn-danger">Canselar</a>
-                  </div>
-                </div>
-								<?php endif; ?>
-                </form>
+								<?php if($num_questao === 2):?>
+	                <div class="form-group">
+	                  <div class="col-sm-offset-2 col-sm-10">
+	                    <button type="submit" class="btn btn-success">Responder</button>
+	                    <a href="<?php echo BASE;?>questao/destruirSession" class="btn btn-danger">Canselar</a>
+	                  </div>
+	                </div>
+							<?php endif; ?>
+									<?php if($num_questao === 1): ?>
+										<div class="alert alert-block alert-warning">
+			                  <h4>Prova concluida!</4>
+												<h6>Para acompanhar seu desempenho clique em <strong>Atividades</strong> depois <strong>Histórico</strong> e visualize.</6>
+			              </div>
+									<?php endif; ?>
+						<?php endif; ?><!--Fechamento do primeiro if de empty-->
+								</form>
             </div>
         </div>
