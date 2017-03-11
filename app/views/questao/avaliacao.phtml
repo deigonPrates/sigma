@@ -5,20 +5,22 @@
 <div class="conteiner form-group">
     <div class="col-md-7 col-md-offset-3">
               <?php echo (isset($this->alert) ? $this->alert : ''); ?>
-              <form action="<?php echo BASE . 'questao/gravarespostaAvaliacao'?>" class="form-horizontal" method="post">
+              <form action="<?php echo BASE. 'questao/gravaRespostaAvaliacao/'.$view_contador?>" class="form-horizontal" method="post">
                 <div class="form-group">
                     <?php
                       $num_questao=1;
-											if(!empty($view_question)):
+											if(!empty($view_question) && (!empty(($view_contador)))):
                         foreach ($view_question as $key):
-													if($key->activity_id == $view_activity['activity_id']):
-                            echo $num_questao. ') '. $key->query.'<br>';
-														echo "<label><input type='radio' name='a' value='a.$key->id'> a). $key->alternative_a</label>".'<br>';
-														echo "<label><input type='radio' name='a' value='b.$key->id'> b). $key->alternative_b</label>".'<br>';
-														echo "<label><input type='radio' name='a' value='c.$key->id'> c). $key->alternative_c</label>".'<br>';
-														echo "<label><input type='radio' name='a' value='d.$key->id'> d). $key->alternative_d</label>".'<br>';
-														echo "<label><input type='radio' name='a' value='e.$key->id'> e). $key->alternative_e</label>".'<br>';
-                          	$num_questao++;
+													if($key->number === $view_contador):
+															if($key->activity_id == $view_activity['activity_id']):
+		                            echo $num_questao. ') '. $key->query.'<br>';
+																echo "<label><input type='radio' name='alternative' value='a.$key->id'> a). $key->alternative_a</label>".'<br>';
+																echo "<label><input type='radio' name='alternative' value='b.$key->id'> b). $key->alternative_b</label>".'<br>';
+																echo "<label><input type='radio' name='alternative' value='c.$key->id'> c). $key->alternative_c</label>".'<br>';
+																echo "<label><input type='radio' name='alternative' value='d.$key->id'> d). $key->alternative_d</label>".'<br>';
+																echo "<label><input type='radio' name='alternative' value='e.$key->id'> e). $key->alternative_e</label>".'<br>';
+		                          	$num_questao++;
+															endif;
 													endif;
                         endforeach;
                      ?>
@@ -26,7 +28,7 @@
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Responder</button>
-                    <a href="<?php echo BASE;?>home" class="btn btn-danger">Canselar</a>
+                    <a href="<?php echo BASE;?>questao/destruirSession" class="btn btn-danger">Canselar</a>
                   </div>
                 </div>
 								<?php endif; ?>

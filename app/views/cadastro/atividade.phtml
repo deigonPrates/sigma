@@ -5,15 +5,15 @@
 <div class="conteiner form-group">
     <div class="col-md-7 col-md-offset-3">
 					<div class="flutuante">
-              <?php echo (isset($this->alert) ? $this->alert : '');?>
+              <?php echo (isset($this->alert) ? $this->alert : ''); var_dump($view_contador);?>
 						</div>
-              <form action="<?php echo BASE; ?>cadastro/atividade" class="form-horizontal" method="post">
+              <form action="<?php echo BASE.'cadastro/atividade/'.$view_contador;" class="form-horizontal" method="post">
                 <div class="form-group">
                   <label for="room" name="room" class="col-sm-2 control-label">Turma:</label>
                   <div class="col-sm-10">
                     <select required class="form-control" name="room_id">
                     <option selected="" disabled="">Selecione</option>
-                    <?php foreach ($view_room as $room) :?>
+                    <?php  foreach ($view_room as $room) :?>
                         <option value="<?php echo($room->id);?>"><?php echo($room->name.' de '.$room->year.'- Professor: '. $room->teacher);?></option>
                     <?php endforeach; ?>
                     </select>

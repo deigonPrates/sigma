@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="<?php echo BOWER; ?>font-awesome/css/font-awesome.min.css" type="text/css">
 	<link rel="stylesheet" href="<?php echo CSS; ?>main.css" type="text/css">
 	<link rel="stylesheet" href="<?php echo CSS; ?>custom_aluno.css" type="text/css">
- <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
+ <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 	<?php
 		echo $add_css;
 		echo $add_js;
@@ -51,7 +51,7 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Inicio<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+        <li class="active"><a href="<?php echo BASE; ?>home/">Inicio<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
           <ul class="dropdown-menu forAnimate" role="menu">
@@ -62,7 +62,7 @@
 				<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Atividades<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
           <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="<?php echo BASE; ?>questao/atividade">Fazer atividade</a></li>
+            <li><a href="<?php echo BASE; ?>questao/definirAtividade">Fazer atividade</a></li>
             <li class="divider"></li>
             <li><a href="<?php echo BASE;?>questao/visualizarAtividade">Ver histórico</a></li>
           </ul>
