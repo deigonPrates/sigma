@@ -111,11 +111,21 @@ class QuestaoController extends \HXPHP\System\Controller{
 
   }
 
-  public function visualizarAtividadeAction($activity_id = null){
-    $this->view->setFile('listarAtividades');
+  public function visualizarAtividadeAction(){
+      $this->view->setFile('listarAtividades');
+      $this->view->setVars([
+        'activity' => Activity::all()
+      ]);
+
+  }
+  public function visualizarHistoricoAction($activity_id = null){
+    $post = $this->request->post();
+    $this->view->setFile('historico');
+
     $this->view->setVars([
-      'activity' => Activity::all()
+      'tipo' => $post
     ]);
+
   }
 
   public function destruirSessionAction(){
