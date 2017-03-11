@@ -11,7 +11,7 @@ class EditarController extends \HXPHP\System\Controller{
           true
       );
       $this->view->setTitle('SIGMA - Editar');
-      
+
       $this->auth->redirectCheck(false);
       $this->view->setVars([
           'users' => User::all($this->auth->getUserId())
@@ -95,5 +95,13 @@ class EditarController extends \HXPHP\System\Controller{
               }
           }
 
+    }
+
+    public function atividadeAction(){
+      $this->view->setPath('cadastro');
+      $this->view->setFile('questao');
+      $this->view->setVars([
+        'activity' => Activity::all()
+      ]);
     }
 }
