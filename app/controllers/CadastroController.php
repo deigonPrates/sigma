@@ -166,7 +166,7 @@ class CadastroController extends \HXPHP\System\Controller{
         }else{
           $this->load('Helpers\Alert', array(
               'success',
-              'Aluno registrado na turma com sucesso!'
+              'Aluno matriculado na turma com sucesso!'
           ));;
         }
     }
