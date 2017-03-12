@@ -8,13 +8,13 @@
               <form action="<?php echo BASE. 'questao/gravaRespostaAvaliacao/'.$view_contador?>" class="form-horizontal" method="post">
                 <div class="form-group">
                     <?php
-                      $num_questao=1;
+                      $contador=1;
 											if(!empty($view_question) && (!empty(($view_contador)))):
                         foreach ($view_question as $key):
 													if($key->number === $view_contador):
 															if($key->activity_id == $view_activity['activity_id']):
 		                            echo $view_contador. ') '. $key->query.'<br>';
-																$num_questao++;
+																$contador++;
 																echo "<label><input type='radio' name='alternative' value='a.$key->id'> a). $key->alternative_a</label>".'<br>';
 																echo "<label><input type='radio' name='alternative' value='b.$key->id'> b). $key->alternative_b</label>".'<br>';
 																echo "<label><input type='radio' name='alternative' value='c.$key->id'> c). $key->alternative_c</label>".'<br>';
@@ -25,7 +25,7 @@
                         endforeach;
                      ?>
                 </div>
-								<?php if($num_questao === 2):?>
+								<?php if($contador === 2):?>
 	                <div class="form-group">
 	                  <div class="col-sm-offset-2 col-sm-10">
 	                    <button type="submit" class="btn btn-success">Responder</button>
@@ -33,7 +33,7 @@
 	                  </div>
 	                </div>
 							<?php endif; ?>
-									<?php if($num_questao === 1): ?>
+									<?php if($contador === 1): ?>
 										<div class="alert alert-block alert-info">
 			                  <h4>Prova concluida!</4>
 												<h6>Para acompanhar seu desempenho clique em <strong>Atividades</strong> depois <strong>Histórico</strong> e visualize.</6>
