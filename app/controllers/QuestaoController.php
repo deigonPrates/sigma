@@ -93,7 +93,8 @@ class QuestaoController extends \HXPHP\System\Controller{
       $post = [
         'user_id' => $this->auth->getUserId(),
         'question_id' => $questao_id,
-        'alternative' => $alternativa
+        'alternative' => $alternativa,
+        'number' => ($contador-1)
       ];
 
         $gravacao = Answers::salvarResposta($post);
@@ -102,7 +103,7 @@ class QuestaoController extends \HXPHP\System\Controller{
           $this->view->setFile('avaliacao');
           $this->load('Helpers\Alert', array(
             'danger',
-            'Por favor, corrija os erros encontrados para efetuar o cadastro!',
+            'Ops! Não conseguimos salvar sua resposta pois:',
             $gravacao->errors
           ));
         }
