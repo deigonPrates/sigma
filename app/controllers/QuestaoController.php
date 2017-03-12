@@ -118,14 +118,39 @@ class QuestaoController extends \HXPHP\System\Controller{
       ]);
 
   }
-  public function visualizarHistoricoAction($activity_id = null){
+  public function visualizarHistoricoAction(){
+
     $post = $this->request->post();
     $this->view->setFile('historico');
 
     $this->view->setVars([
       'tipo' => $post
     ]);
+    $activity = Activity::all();
+    $question = Question::all();
+    $answers = Answers::all();
 
+    $question_id= array();
+    $activity_id= array();
+    $answers_id= array();
+    $question_answer= array();
+
+    foreach ($activity as $key) {
+       $activity_id[] = $key->id;
+    }
+    $cont =  count($activity_id);
+
+    for($i =0 ; $i< $cont; $i++){
+      foreach ($question as $key) {
+        if($key->activity_id === $activity_id[$i] ){
+          $question_answer[$key->id] = $key->answer;
+        }
+      }
+    }
+
+    var_dump($activity_id);
+    var_dump($question_answer);
+    var_dump($answers);
   }
 
   public function destruirSessionAction(){

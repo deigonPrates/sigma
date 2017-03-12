@@ -1,0 +1,13 @@
+
+Objetivos
+
+-> Colocar um atributo na table answers chamdo number... do mesmo jeito que fizemos anteriormente
+-> finalizar a proparação das respostas
+-> fazer a contagem das respostas certas e erradas
+-> colocar os valores da contagem na chart
+
+TESTE
+
+->  adicionar novas perguntas
+->  adicionar novas atividades
+->  passar o id da atividade para pelo formulario
