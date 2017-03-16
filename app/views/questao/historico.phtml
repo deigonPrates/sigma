@@ -26,32 +26,11 @@
 <div class="panel-body conteudo">
     <div class="form-group">
         
-    <h3><p class="text-center">Visualizar Histórico de atividades</p></h3><br>
+    <h3><p class="text-center">Histórico da atividade</p></h3><br>
     <form action="<?php echo BASE; ?>questao/visualizarHistorico" class="form-horizontal" method="post">
-            <label for="room" name="tipo" class="col-sm-2 control-label">Tipo:</label>
-            <div class="col-sm-4">
-                <select required class="form-control" name="tipo">
-                    <option selected="" disabled="">Selecione</option>
-                    <option value="simples">Simples</option>
-                    <option value="completo">Completo</option>
-                </select>
-            </div>
-            <div class="col-sm-offset-2 col-sm-3">
-                <button type="submit" class="btn btn-success">Visualizar</button>
-            </div>
-            <br>
-            <br>
-            <br>
+            
             <div class="visualizar">
-                <?php if (!empty($view_tipo)):
-                    ?>
-                    <?php if ($view_tipo['tipo'] == 'simples'): ?>
-                        <div class="visualizar" id="chart_div"></div>
-                    <?php endif; ?>
-                    <?php if ($view_tipo['tipo'] == 'completo'): ?>
-                        <div class="visualizar" id="barras"></div>
-                    <?php endif; ?>
-                <?php endif; ?>
+                   <div class="visualizar" id="chart_div"></div>
             </div>
         </form>
     </div>
