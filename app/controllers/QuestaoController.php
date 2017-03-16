@@ -130,40 +130,7 @@ class QuestaoController extends \HXPHP\System\Controller{
       'tipo' => $post
     ]);
     $activity_id = $this->session->get('activity_id');
-    $question = Question::all();
-    $answers = Answers::all();
-
-    $question_id= array();
-    $question_answer= array();
-    $answers_student= array();
-
-    for($i=1 ; $i <= $activity_id; $i++){
-      foreach ($question as $key) {
-        if($key->activity_id === (int)$activity_id ){
-          $question_answer[$key->id] = $key->answer;
-        }
-      }
-    }
-    $count = count($question_answer);
-
-    for($i=1 ; $i <= $count; $i++){
-      foreach ($answers as $key) {
-        if($key->question_id === $i ){
-          $answers_student[$key->question_id] = $key->alternative;
-        }
-      }
-    }
-
-    $acertos = 0;
-    for($i=1 ; $i <= $count; $i++){
-      if (strcasecmp($question_answer[$i], $answers_student[$i]) == 0) {
-          $acertos++;
-        }
-    }
-
-    var_dump($question_answer);
-    var_dump($answers_student);
-    var_dump($acertos);
+    
   }
 
   public function destruirSessionAction(){

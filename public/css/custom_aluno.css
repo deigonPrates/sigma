@@ -68,6 +68,13 @@ body,html{
   .main{
     padding: 10px 10px 0 10px;
   }
+    .visualizar{
+    height: 420px !important;
+    width: 782px !important;
+    margin-left: 89px !important;
+    margin-top: 2px !important;
+    background-color: #f8f8f8
+  }
 
  @media (min-width: 765px) {
 

@@ -23,31 +23,7 @@
 
 
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript">
-            google.load("visualization", "1", {packages: ["corechart"]});
-            //função de monta e desenha o gráfico
-            function drawChart() {
-//variavel com armazenamos os dados, um array de array's
-//no qual a primeira posição são os nomes das colunas
-                var data = google.visualization.arrayToDataTable([
-                    ['Questão', 'RD atividade'],
-                    ['Acertaram', 80],
-                    ['Erraram', 20],
-                ]);
-                //opções para exibição do gráfico
-                var options = {
-                    title: 'Regra de 3 simples', //titulo do gráfico
-                    is3D: true // false para 2d e true para 3d o padrão é false
-                };
-                //cria novo objeto PeiChart que recebe
-                //como parâmetro uma div onde o gráfico será desenhado
-                var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-                //desenha passando os dados e as opções
-                chart.draw(data, options);
-            }
-//metodo chamado após o carregamento
-            google.setOnLoadCallback(drawChart);
-        </script>
+        
         <script type="text/javascript">
             google.load("visualization", "1", {packages: ["corechart"]});
             google.setOnLoadCallback(drawChart);
