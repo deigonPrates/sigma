@@ -1,8 +1,8 @@
 body,html{
     height: 100%;
-    background-color: #B5BFC9 !important;
+    background-color: #78828C !important;
     font-family: 'Roboto', sans-serif!important;
-
+    color: #78828C;
   }
   ul.nav li.dropdown:hover ul.dropdown-menu
   {
@@ -17,13 +17,13 @@ body,html{
   }
 
   .visualizar{
-    height:400px!important;
-    width:770px!important;
-    margin-left: 140px!important ;
-    margin-top: -450px!important;
+    height: 420px !important;
+    width: 782px !important;
+    margin-left: 89px !important;
+    margin-top: 2px !important;
   }
   a{
-    color: black;
+    color: #78828C!important;
   }
   .btn-buscar{
       margin-left: 60%;
@@ -39,9 +39,10 @@ body,html{
   padding-top: 1%;
 }
 .rodape{
+    font-family: 'Roboto', sans-serif!important;
     padding-top: 2%!important;
     margin-top: -5%;
-    color: black;
+    color: #78828C!important;
 }
 .menu_fixo{
     height: 7%;
@@ -50,13 +51,13 @@ body,html{
     margin-left: 10%;
 }
 .conteudo{
-    color: black;
-    margin-left: 9%;
-    margin-top: 11px;
-    height: 103%;
-    width: 99%;
-    background-color: #f8f8f8;
-    border-radius: 27px;
+    color: #78828C!important;
+    margin-left: 95px!important;
+    margin-top: 9px!important;
+    height: 596px!important;
+    width: 1155px!important;
+    background-color: #f8f8f8!important;
+    border-radius: 5px!important;
 }
 .flutuante{
     width:267px;
@@ -138,7 +139,7 @@ body,html{
 
     nav.sidebar{
       width: 200px;
-      height: 98%;
+      height: 99%;
       margin-left: -160px;
       float: left;
       margin-bottom: 0px;

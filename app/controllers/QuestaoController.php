@@ -37,10 +37,10 @@ class QuestaoController extends \HXPHP\System\Controller{
     $this->view->setVars([
       'activity' => Activity::all()
     ]);
-  }
+    }
 
   public function responderAvaliacaoAction($contador = null){
-
+      
     $this->view->setFile('avaliacao');
 
     if(is_null($contador)){
@@ -66,6 +66,8 @@ class QuestaoController extends \HXPHP\System\Controller{
     }
   }
   public function gravaRespostaAvaliacaoAction($contador = null){
+    
+      
     $this->view->setFile('avaliacao');
 
     $post= $this->request->post();
@@ -117,7 +119,7 @@ class QuestaoController extends \HXPHP\System\Controller{
       $this->view->setVars([
         'activity' => Activity::all()
       ]);
-
+      
   }
   public function visualizarHistoricoAction(){
 
@@ -127,31 +129,41 @@ class QuestaoController extends \HXPHP\System\Controller{
     $this->view->setVars([
       'tipo' => $post
     ]);
-    $activity = Activity::all();
+    $activity_id = $this->session->get('activity_id');
     $question = Question::all();
     $answers = Answers::all();
 
     $question_id= array();
-    $activity_id= array();
-    $answers_id= array();
     $question_answer= array();
+    $answers_student= array();
 
-    foreach ($activity as $key) {
-       $activity_id[] = $key->id;
-    }
-    $cont =  count($activity_id);
-
-    for($i =0 ; $i< $cont; $i++){
+    for($i=1 ; $i <= $activity_id; $i++){
       foreach ($question as $key) {
-        if($key->activity_id === $activity_id[$i] ){
+        if($key->activity_id === (int)$activity_id ){
           $question_answer[$key->id] = $key->answer;
         }
       }
     }
+    $count = count($question_answer);
 
-    var_dump($activity_id);
+    for($i=1 ; $i <= $count; $i++){
+      foreach ($answers as $key) {
+        if($key->question_id === $i ){
+          $answers_student[$key->question_id] = $key->alternative;
+        }
+      }
+    }
+
+    $acertos = 0;
+    for($i=1 ; $i <= $count; $i++){
+      if (strcasecmp($question_answer[$i], $answers_student[$i]) == 0) {
+          $acertos++;
+        }
+    }
+
     var_dump($question_answer);
-    var_dump($answers);
+    var_dump($answers_student);
+    var_dump($acertos);
   }
 
   public function destruirSessionAction(){

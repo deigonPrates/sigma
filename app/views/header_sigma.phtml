@@ -1,133 +1,108 @@
 <!doctype html>
 <html lang="pt-br">
-<head>
-	<meta charset="utf-8">
-	<meta name="author" content="Bruno C. Santos">
-	<meta name="generator" content="HXPHP Framework">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php echo $view_title; ?></title>
-	<link rel="shortcut icon" href="<?php echo IMG; ?>favicon.jpg" type="image/x-icon">
-	<link rel="stylesheet" href="<?php echo BOWER; ?>bootstrap/dist/css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="<?php echo BOWER; ?>font-awesome/css/font-awesome.min.css" type="text/css">
-	<link rel="stylesheet" href="<?php echo CSS; ?>main.css" type="text/css">
-	<link rel="stylesheet" href="<?php echo CSS; ?>custom_menu.css" type="text/css">
- <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-	<!-- Data Table -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Bruno C. Santos">
+        <meta name="generator" content="HXPHP Framework">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><?php echo $view_title; ?></title>
+        <link rel="shortcut icon" href="<?php echo IMG; ?>favicon.jpg" type="image/x-icon">
+        <link rel="stylesheet" href="<?php echo BOWER; ?>bootstrap/dist/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo BOWER; ?>font-awesome/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo CSS; ?>main.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo CSS; ?>custom_menu.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+        <!-- Data Table -->
 
-	<link href="<?php echo BOWER; ?>assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-	<link href="<?php echo BOWER; ?>assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo BOWER; ?>assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo BOWER; ?>assets/css/components.css" rel="stylesheet" type="text/css" />
 
-	<?php
-		echo $add_css;
-		echo $add_js;
-	?>
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-			//função de monta e desenha o gráfico
-       function drawChart() {
- 	//variavel com armazenamos os dados, um array de array's
- 	//no qual a primeira posição são os nomes das colunas
- 	var data = google.visualization.arrayToDataTable([
-           ['Questão', 'RD atividade'],
-           ['Acertaram',     80],
-           ['Erraram',      20],
+        <?php
+        echo $add_css;
+        echo $add_js;
+        ?>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages: ["corechart"]});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+//montando o array com os dados
+                var data = google.visualization.arrayToDataTable([
+                    ['questão', 'Acertos', 'Erros'],
+                    ['1', 6, 4],
+                    ['2', 11, 4],
+                    ['3', 6, 11],
+                    ['4', 11, 4],
+                    ['5', 6, 11],
+                    ['6', 10, 5],
+                    ['7', 11, 4],
+                    ['8', 6, 11],
+                    ['9', 10, 5]
+                ]);
+//opçoes para o gráfico barras
+                var options = {
+                    title: 'Performance',
+                    vAxis: {title: 'Questões', titleTextStyle: {color: 'black'}}//legenda vertical
+                };
+//instanciando e desenhando o gráfico barras
+                var barras = new google.visualization.BarChart(document.getElementById('barras'));
+                barras.draw(data, options);
 
-         ]);
- 		//opções para exibição do gráfico
-         var options = {
-           		title: 'Regra de 3 simples',//titulo do gráfico
- 		is3D: true // false para 2d e true para 3d o padrão é false
-         };
- 		//cria novo objeto PeiChart que recebe
- 		//como parâmetro uma div onde o gráfico será desenhado
-         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
- 		//desenha passando os dados e as opções
-         chart.draw(data, options);
-       }
- 	//metodo chamado após o carregamento
- 	 google.setOnLoadCallback(drawChart);
-     </script>
-		 <script type="text/javascript">
-		google.load("visualization", "1", {packages:["corechart"]});
-		google.setOnLoadCallback(drawChart);
-		function drawChart() {
-	//montando o array com os dados
-			var data = google.visualization.arrayToDataTable([
-				['questão', 'Acertos', 'Erros'],
-				['1',  6,      4],
-				['2',  11,      4],
-				['3',  6,       11],
-				['4',  11,      4],
-				['5',  6,       11],
-				['6',  10,      5],
-				['7',  11,      4],
-				['8',  6,       11],
-				['9',  10,      5]
-			]);
-	//opçoes para o gráfico barras
-			var options = {
-				title: 'Performance',
-				vAxis: {title: 'Questões',  titleTextStyle: {color: 'black'}}//legenda vertical
-			};
-	//instanciando e desenhando o gráfico barras
-			var barras = new google.visualization.BarChart(document.getElementById('barras'));
-			barras.draw(data, options);
+            }
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default sidebar" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="logo-sigma"><a href="<?php echo BASE; ?>home"><center><img class="logo" src="<?php echo IMG; ?>sigma-logo.png" alt=""></center></a></li>
+                        <li class="active"><a href="<?php echo BASE; ?>home">Inicio<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-edit"></span></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="<?php echo BASE; ?>editar/perfil">Editar</a></li>
+                                <li><a href="<?php echo BASE; ?>editar/senha">Modificar senha</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon fa fa-book"></span></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="<?php echo BASE; ?>cadastro/atividade">Atividade</a></li>
+                                <li><a href="<?php echo BASE; ?>cadastro/usuario">Usuário</a></li>
+                                <li><a href="<?php echo BASE; ?>cadastro/turma">Turma</a></li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo BASE; ?>cadastro/alunoTurma">Aluno na Turma</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">SIGMA <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-gbp"></span></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="<?php echo BASE; ?>sigma/listarUsuarios">Listar usuários</a></li>
+                                <li><a href="<?php echo BASE; ?>sigma/listarAtividade">Listar Atividades</a></li>
+                                <li><a href="<?php echo BASE; ?>sigma/listarTurma">Listar Turmas</a></li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo BASE; ?>recuperar/senha">Recuperar senha</a></li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo BASE; ?>sigma/RDAtividade">R.D. por atividade</a></li>
+                                <li><a href="<?php echo BASE; ?>sigma/RDAluno">R.D. por aluno</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="menu_fixo">
+            <a href="<?php echo BASE; ?>login/sair" class="btn btn-mini btn-sair" target="_self">Sair</a>
 
-		}
-	</script>
-</head>
-<body>
-	<nav class="navbar navbar-default sidebar" role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-				<li class="logo-sigma"><a href="<?php echo BASE;?>home"><center><img class="logo" src="<?php echo IMG; ?>sigma-logo.png" alt=""></center></a></li>
-        <li class="active"><a href="<?php echo BASE;?>home">Inicio<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="<?php echo BASE;?>editar/perfil">Editar</a></li>
-            <li><a href="<?php echo BASE;?>editar/senha">Modificar senha</a></li>
-          </ul>
-        </li>
-				<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="<?php echo BASE;?>cadastro/atividade">Atividade</a></li>
-	          <li><a href="<?php echo BASE;?>cadastro/usuario">Usuário</a></li>
-	          <li><a href="<?php echo BASE;?>cadastro/turma">Turma</a></li>
-						<li class="divider"></li>
-            <li><a href="<?php echo BASE; ?>cadastro/alunoTurma">Aluno na Turma</a></li>
-          </ul>
-        </li>
-				<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">SIGMA <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-gbp"></span></a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="<?php echo BASE; ?>sigma/listarUsuarios">Listar usuários</a></li>
-	          <li><a href="<?php echo BASE; ?>sigma/listarAtividade">Listar Atividades</a></li>
-	          <li><a href="<?php echo BASE; ?>sigma/listarTurma">Listar Turmas</a></li>
-            <li class="divider"></li>
-	          <li><a href="<?php echo BASE; ?>recuperar/senha">Recuperar senha</a></li>
-            <li class="divider"></li>
-            <li><a href="<?php echo BASE; ?>sigma/RDAtividade">R.D. por atividade</a></li>
-            <li><a href="<?php echo BASE; ?>sigma/RDAluno">R.D. por aluno</a></li>
-          </ul>
-        </li>
-        </ul>
-    </div>
-  </div>
-</nav>
-<div class="menu_fixo">
-	<a href="<?php echo BASE;?>login/sair" class="btn btn-mini btn-sair" target="_self">Sair</a>
-
-</div>
-	<div class="container">
+        </div>
+        <div class="container">

@@ -1,8 +1,8 @@
 
 Objetivos
 
--> Colocar um atributo na table answers chamdo number... do mesmo jeito que fizemos anteriormente
--> finalizar a proparação das respostas
+* Colocar um atributo na table answers chamdo number... do mesmo jeito que fizemos anteriormente
+-> finalizar a proparação das respostas igual nas perguntas e atividaes
 -> fazer a contagem das respostas certas e erradas
 -> colocar os valores da contagem na chart
 

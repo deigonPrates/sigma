@@ -11,6 +11,8 @@ class CadastroController extends \HXPHP\System\Controller{
         true
     );
 
+   $this->load('Storage\Session');
+
     $this->view->setTitle('SIGMA - Cadastro');
     $this->auth->redirectCheck(false);
 
@@ -96,6 +98,10 @@ class CadastroController extends \HXPHP\System\Controller{
     $this->view->setVars([
         'room' => Room::all()
     ]);
+    $this->view->setVars([
+      'activity' => Activity::all(),
+      'contador' => 1
+    ]);
     if(!empty($post)){
       $cadastroAtividade = Activity::cadastrarAtividade($post);
 
@@ -106,13 +112,14 @@ class CadastroController extends \HXPHP\System\Controller{
           $cadastroAtividade->errors
         ));
       }else{
-        $this->load('Helpers\Alert', array(
-            'success',
-            'Atividade cadastrada com sucesso. <a href="questao" class="btn btn-danger">Clique aqui</a> para adicionar as questões da atividade'
-        ));;
+        $activity_id = Activity::last();
+        $activity_id = $activity_id->id;
+        $this->session->set('activity_id', $activity_id);
+        $this->view->setFile('questao');
       }
     }
   }
+
   public function questaoAction(){
 
     $this->view->setFile('questao');
@@ -129,6 +136,11 @@ class CadastroController extends \HXPHP\System\Controller{
     $post = $this->request->post();
 
     if(!empty($post)){
+
+      $post = array_merge($post, array(
+          'activity_id' => $this->session->get('activity_id')
+      ));
+
       $cadastrarQuestao = Question::cadastrarQuestao($post);
 
       if($cadastrarQuestao->status === false){

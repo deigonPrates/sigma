@@ -1,6 +1,8 @@
 body,html{
     height: 100%;
-    background-color: #B5BFC9 !important;
+    background-color: #78828C !important;
+    font-family: 'Roboto', sans-serif!important;
+    color: #78828C;
   }
   ul.nav li.dropdown:hover ul.dropdown-menu
   {
@@ -40,13 +42,13 @@ body,html{
     margin-left: 10%;
 }
 .conteudo{
-    color: black;
+    color: #78828C!important;
     margin-left: 100px;
     margin-top: -86px;
     height: 589px;
     width: 1139px;
-    background-color: #f8f8f8;
-    border-radius: 27px;
+    background-color: #f8f8f8!important;
+    border-radius: 5px!important;
 }
   .logo-sigma{
     background-color: #f8f8f8;
