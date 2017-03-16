@@ -211,22 +211,7 @@ class SigmaController extends \HXPHP\System\Controller {
         $post = $this->request->post();
         $this->view->setHeader('header_sigma');
         $this->view->setFile('visualizarRDAtividade');
-        $acerto = Answers::find_by_sql("SELECT COUNT(answers.id)as acertos from answers"
-                        . "                   join questions on questions.id = answers.question_id "
-                        . "                   and questions.activity_id = ? and answers.alternative "
-                        . "                   = questions.answer", array($activity_id));
-
-        $erros = Answers::find_by_sql("SELECT COUNT(answers.id)as erros from answers"
-                        . "                   join questions on questions.id = answers.question_id "
-                        . "                   and questions.activity_id = ? and answers.alternative "
-                        . "                   != questions.answer", array($activity_id));
-
-
-        $this->view->setVars([
-            'tipo' => $post,
-            'acertos' => $acerto[0]->acertos,
-            'erros' => $erros[0]->erros
-        ]);
+       
     }
 
     public function visualizarRDAlunoAction($activity_id = null) {

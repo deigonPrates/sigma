@@ -73,7 +73,7 @@ body,html{
     width: 782px !important;
     margin-left: 89px !important;
     margin-top: 2px !important;
-    background-color: #f8f8f8
+    background-color: #f8f8f8;
   }
 
  @media (min-width: 765px) {
