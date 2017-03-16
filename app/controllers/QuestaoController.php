@@ -129,9 +129,25 @@ class QuestaoController extends \HXPHP\System\Controller {
         if (!is_null($activity_id)) {
             $this->session->set('id_atividade', $activity_id);
         }
+        $id_atividade = $this->session->get('id_atividade');
+        
+         $acerto = Answers::find_by_sql("SELECT COUNT(answers.id)as acertos from answers"
+                        . "                   join questions on questions.id = answers.question_id "
+                        . "                   and questions.activity_id = ? and answers.alternative "
+                        . "                   = questions.answer", array($id_atividade));
 
-        var_dump($this->session->get('id_atividade'));
+        $erros = Answers::find_by_sql("SELECT COUNT(answers.id)as erros from answers"
+                        . "                   join questions on questions.id = answers.question_id "
+                        . "                   and questions.activity_id = ? and answers.alternative "
+                        . "                   != questions.answer", array($id_atividade));
 
+        $subject = Activity::find($id_atividade);
+        $this->view->setVars([
+            'tipo' => $post,
+            'acertos' => $acerto[0]->acertos,
+            'erros' => $erros[0]->erros,
+            'assunto' => $subject
+        ]);
         
     }
 
