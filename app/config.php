@@ -4,7 +4,7 @@
 
 	$configs->env->add('development');
 
-  $configs->env->development->baseURI= '/sistema/';
+  $configs->env->development->baseURI= '/sigma/';
 
   $configs->env->development->database->setConnectionData([
     'host' => 'localhost',

@@ -1,13 +1,13 @@
 <div class="panel-body conteudo">
     <div class="conteiner form-group">
-        <h3><p class="text-center">Cadastrar Questões para a prova</p></h3><br>
+        <h3><p class="text-center">Adicionar mais questões para a prova</p></h3><br>
     </div>
     <div class="conteiner form-group">
         <div class="col-md-7 col-md-offset-3">
             <div class="flutuante">
                 <?php echo (isset($this->alert) ? $this->alert : ''); ?>
             </div>
-            <form action="<?php echo BASE . 'cadastro/questao/' ?>" class="form-horizontal" method="post">
+            <form action="<?php echo BASE . 'editar/atividade/' ?>" class="form-horizontal" method="post">
                 <div class="form-group">
                     <label for="room" name="room" class="col-sm-2 control-label">Atividade:</label>
                     <div class="col-sm-4">
