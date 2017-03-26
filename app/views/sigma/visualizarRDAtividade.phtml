@@ -6,12 +6,12 @@
         //no qual a primeira posição são os nomes das colunas
         var data = google.visualization.arrayToDataTable([
             ['Questão', 'Porcentagem'],
-            ['Acertou', 80],
-            ['Errou', 20],
+            ['Aprovados', <?php echo $view_aprovados; ?>],
+            ['Reprovados', <?php echo $view_reprovados; ?>]
         ]);
         //opções para exibição do gráfico
         var options = {
-            title: 'Regra de 3 simples', //titulo do gráfico
+            title: <?php echo "'" . ($view_assunto->subject) . "'"; ?>, //titulo do gráfico
             is3D: true // false para 2d e true para 3d o padrão é false
         };
         //cria novo objeto PeiChart que recebe
@@ -23,6 +23,40 @@
     //metodo chamado após o carregamento
     google.setOnLoadCallback(drawChart);
 </script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages: ["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+//montando o array com os dados
+        var data = google.visualization.arrayToDataTable([
+            ['questão', 'Acertos', 'Erros'],
+<?php
+$aux = 1;
+for ($i = 0; $i < $view_total; $i++) {
+    if ($aux < $view_total) {
+        $x = ',';
+    } else {
+        $x = NULL;
+    }
+    echo '[' . "'" . $aux . "'" . ',' . $view_acertos[$i] . ',' . $view_erros[$i] . ']' . "$x";
+
+    $aux++;
+}
+?>
+        ]);
+//opçoes para o gráfico barras
+        var options = {
+            title: <?php echo "'" . ($view_assunto->subject) . "'"; ?>,
+            vAxis: {title: 'Questões', titleTextStyle: {color: 'black'}}//legenda vertical
+        };
+//instanciando e desenhando o gráfico barras
+        var barras = new google.visualization.BarChart(document.getElementById('barras'));
+        barras.draw(data, options);
+
+    }
+</script>
+
+
 <div class="panel-body conteudo">
     <div class="form-group">
         <h3><p class="text-center">Visualizar relatório de desempenho por atividade</p></h3><br>

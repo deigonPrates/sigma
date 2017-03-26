@@ -1,78 +1,78 @@
 <!doctype html>
 <html lang="pt-br">
-<head>
-	<meta charset="utf-8">
-	<meta name="author" content="Bruno C. Santos">
-	<meta name="generator" content="HXPHP Framework">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php echo $view_title; ?></title>
-	<link rel="shortcut icon" href="<?php echo IMG; ?>favicon.jpg" type="image/x-icon">
-	<link rel="stylesheet" href="<?php echo BOWER; ?>bootstrap/dist/css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="<?php echo BOWER; ?>font-awesome/css/font-awesome.min.css" type="text/css">
-	<link rel="stylesheet" href="<?php echo CSS; ?>main.css" type="text/css">
-	<link rel="stylesheet" href="<?php echo CSS; ?>custom_menu.css" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-	<!-- Data Table -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Bruno C. Santos">
+        <meta name="generator" content="HXPHP Framework">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><?php echo $view_title; ?></title>
+        <link rel="shortcut icon" href="<?php echo IMG; ?>favicon.jpg" type="image/x-icon">
+        <link rel="stylesheet" href="<?php echo BOWER; ?>bootstrap/dist/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo BOWER; ?>font-awesome/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo CSS; ?>main.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo CSS; ?>custom_menu.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <!-- Data Table -->
 
-	<link href="<?php echo BOWER; ?>assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-	<link href="<?php echo BOWER; ?>assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo BOWER; ?>assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo BOWER; ?>assets/css/components.css" rel="stylesheet" type="text/css" />
 
-	<?php
-		echo $add_css;
-		echo $add_js;
-	?>
-</head>
-<body>
-	<nav class="navbar navbar-default sidebar" role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-				<li class="logo-sigma"><a href="<?php echo BASE;?>home"><center><img class="logo" src="<?php echo IMG; ?>sigma-logo.png" alt=""></center></a></li>
-        <li class="active"><a href="<?php echo BASE;?>home">Inicio<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Editar <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-edit"></span></a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="<?php echo BASE;?>editar/perfil">Perfil</a></li>
-            <li><a href="<?php echo BASE;?>editar/senha">Senha</a></li>
-            <li><a href="<?php echo BASE; ?>editar/atividade">Atividade</a></li>
-          </ul>
-        </li>
-				<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon fa fa-book"></span></a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="<?php echo BASE;?>cadastro/atividade">Atividade</a></li>
-	          <li><a href="<?php echo BASE;?>cadastro/usuario">Usuário</a></li>
-	          <li><a href="<?php echo BASE;?>cadastro/turma">Turma</a></li>
-						<li class="divider"></li>
-            <li><a href="<?php echo BASE; ?>cadastro/alunoTurma">Aluno na Turma</a></li>
-          </ul>
-        </li>
-				<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">SIGMA <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon fa fa-graduation-cap"></span></a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="<?php echo BASE; ?>sigma/listarUsuarios">Listar usuários</a></li>
-	          <li><a href="<?php echo BASE; ?>sigma/listarAtividade">Listar Atividades</a></li>
-	          <li><a href="<?php echo BASE; ?>sigma/listarTurma">Listar Turmas</a></li>
-            <li class="divider"></li>
-	          <li><a href="<?php echo BASE; ?>recuperar/senha">Recuperar senha</a></li>
-            <li class="divider"></li>
-            <li><a href="<?php echo BASE; ?>sigma/RDAtividade">R.D. por atividade</a></li>
-            <li><a href="<?php echo BASE; ?>sigma/RDAluno">R.D. por aluno</a></li>
-          </ul>
-        </li>
-        </ul>
-    </div>
-  </div>
-</nav>
-<div class="menu_fixo">
-	<a href="<?php echo BASE;?>login/sair" class="btn btn-mini btn-sair" target="_self">Sair</a>
-</div>
-	<div class="container">
+        <?php
+        echo $add_css;
+        echo $add_js;
+        ?>
+    </head>
+    <body>
+        <nav class="navbar navbar-default sidebar" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="logo-sigma"><a href="<?php echo BASE; ?>home"><center><img class="logo" src="<?php echo IMG; ?>sigma-logo.png" alt=""></center></a></li>
+                        <li class="active"><a href="<?php echo BASE; ?>home">Inicio<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Editar <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-edit"></span></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="<?php echo BASE; ?>editar/perfil">Perfil</a></li>
+                                <li><a href="<?php echo BASE; ?>editar/senha">Senha</a></li>
+                                <li><a href="<?php echo BASE; ?>editar/atividade">Atividade</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon fa fa-book"></span></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="<?php echo BASE; ?>cadastro/atividade">Atividade</a></li>
+                                <li><a href="<?php echo BASE; ?>cadastro/usuario">Usuário</a></li>
+                                <li><a href="<?php echo BASE; ?>cadastro/turma">Turma</a></li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo BASE; ?>cadastro/alunoTurma">Aluno na Turma</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">SIGMA <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon fa fa-graduation-cap"></span></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="<?php echo BASE; ?>sigma/listarUsuarios">Listar usuários</a></li>
+                                <li><a href="<?php echo BASE; ?>sigma/listarAtividade">Listar Atividades</a></li>
+                                <li><a href="<?php echo BASE; ?>sigma/listarTurma">Listar Turmas</a></li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo BASE; ?>recuperar/senha">Recuperar senha</a></li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo BASE; ?>sigma/RDAtividade">R.D. por atividade</a></li>
+                                <li><a href="<?php echo BASE; ?>sigma/RDAluno">R.D. por aluno</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="menu_fixo">
+            <a href="<?php echo BASE; ?>login/sair" class="btn btn-mini btn-sair" target="_self">Sair</a>
+        </div>
+        <div class="container">

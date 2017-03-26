@@ -10,10 +10,10 @@ class EditarController extends \HXPHP\System\Controller {
         $this->view->setTitle('SIGMA - Editar');
 
         $this->auth->redirectCheck(false);
+        
         $this->view->setVars([
             'users' => User::all($this->auth->getUserId())
         ]);
-
 
 
         $role_id = User::find($this->auth->getUserId());

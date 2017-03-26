@@ -4,7 +4,6 @@ class QuestaoController extends \HXPHP\System\Controller {
 
     public function __construct($configs) {
         parent::__construct($configs);
-
         $this->load('Storage\Session');
         $this->load('Services\Auth', $configs->auth->after_login, $configs->auth->after_logout, true
         );
@@ -130,25 +129,26 @@ class QuestaoController extends \HXPHP\System\Controller {
             $this->session->set('id_atividade', $activity_id);
         }
         $id_atividade = $this->session->get('id_atividade');
+
+        $acerto = Answers::find_by_sql("SELECT COUNT(answers.id)as acertos from answers
+                                        join questions on questions.id = answers.question_id 
+                                        join users on users.id = answers.user_id
+                                        WHERE(questions.activity_id = ? and answers.alternative 
+                                        = questions.answer AND users.id = ?)", array($id_atividade, $this->auth->getUserId()));
         
-         $acerto = Answers::find_by_sql("SELECT COUNT(answers.id)as acertos from answers"
-                        . "                   join questions on questions.id = answers.question_id "
-                        . "                   and questions.activity_id = ? and answers.alternative "
-                        . "                   = questions.answer", array($id_atividade));
-
-        $erros = Answers::find_by_sql("SELECT COUNT(answers.id)as erros from answers"
-                        . "                   join questions on questions.id = answers.question_id "
-                        . "                   and questions.activity_id = ? and answers.alternative "
-                        . "                   != questions.answer", array($id_atividade));
-
+        $total = Answers::find_by_sql("SELECT COUNT(questions.id)as total from questions
+                                      WHERE(questions.activity_id = ?)", array($id_atividade));
+        
+        $erros = ((int)$total[0]->total - (int)$acerto[0]->acertos);
+ 
         $subject = Activity::find($id_atividade);
+        
         $this->view->setVars([
             'tipo' => $post,
             'acertos' => $acerto[0]->acertos,
-            'erros' => $erros[0]->erros,
+            'erros' => $erros,
             'assunto' => $subject
         ]);
-        
     }
 
     public function destruirSessionAction() {

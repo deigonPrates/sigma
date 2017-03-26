@@ -13,7 +13,7 @@
     'dbname' => 'emcac'
   ]);
 
-	$configs->env->development->auth->setURLs('/sistema/home/', '/sistema/login/');
+	$configs->env->development->auth->setURLs('/sigma/home/', '/sigma/login/');
 
 
 	$configs->env->add('production');
