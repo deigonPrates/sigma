@@ -263,7 +263,7 @@ class SigmaController extends \HXPHP\System\Controller {
         $total_questoes = (int) $total_questoes[0]->total;
 
         #valor base
-        $base = Question::find_by_sql("select count(questions.value)/2 as media FROM questions
+        $base = Question::find_by_sql("select sum(questions.value)/count(questions.value) as media FROM questions
                                           WHERE(questions.activity_id = ?)", array($activity_id));
         $base = (int) $base[0]->media;
 
@@ -276,7 +276,6 @@ class SigmaController extends \HXPHP\System\Controller {
         }
 
         #completo
-
         $questoes_acertos = array();
 
         #pega todos os alunos q fizeram a prova
@@ -358,110 +357,51 @@ class SigmaController extends \HXPHP\System\Controller {
         $this->view->setFile('visualizarRDAluno');
 
 
-        if (!is_null($activity_id)) {
-            $this->session->set('activity_id', $activity_id);
+        if (!is_null($user_id)) {
+            $this->session->set('$user_id', $user_id);
         } else {
-            $activity_id = $this->session->get('activity_id');
+            $user_id = $this->session->get('$user_id');
         }
-        $subject = Activity::find($activity_id);
 
-        #pegar o id dos alunos q fizeram a prova
-        $user = User::find_by_sql("select DISTINCT users.id from users
-                                    join answers on answers.user_id = users.id
-                                    join questions on questions.id = answers.question_id
-                                     WHERE(questions.activity_id = 1)", array($activity_id));
+        $activity_all = Activity::find('all');
+        $activity_id = array();
 
-        $user_id = array();
-        $notas = array();
-
-        #total de usuario
-        foreach ($user as $key) {
-            $user_id[] = $key->id;
+        foreach ($activity_all as $value) {
+            $activity_id[] = $value->id;
         }
-        $notas_user = array();
 
-        #notas do usuarios
-        for ($i = 0; $i < count($user_id); $i++) {
-            $nota = User::find_by_sql("SELECT SUM(questions.value)as nota FROM questions
-                                           join answers on answers.question_id = questions.id
-                                           WHERE (answers.alternative = questions.answer AND 
-                                           questions.activity_id = ? and answers.user_id = ?)", array($activity_id, $user[$i]->id));
+        #pega o total de acerto de cada prova
+        for ($i = 0; $i < count($activity_id); $i++) {
+            $query_acertos = [$activity_id[$i] => Answers::find_by_sql("SELECT COUNT(answers.id)as acertos from answers
+                                        join questions on questions.id = answers.question_id 
+                                        join users on users.id = answers.user_id
+                                        WHERE(questions.activity_id = ? and answers.alternative 
+                                        = questions.answer AND users.id = ?)", array($activity_id[$i], $user_id))];
+        }
 
-            foreach ($nota as $key) {
-                if (!is_null(($key->nota))) {
-                    $notas[] = (int) $key->nota;
-                } else {
-                    $notas[] = 0;
-                }
+        #pegar o total de questoes de cada prova 
+        for ($i = 0; $i < count($activity_id); $i++) {
+            $query_total_questoes = [$activity_id[$i] => Question::find_by_sql("SELECT COUNT(questions.id)as total from questions
+                                                     where(questions.activity_id = ?)", array($activity_id[$i]))];
+        }
+
+        for ($i = 0; $i <= count($query_acertos); $i++) {
+            if (!empty($query_acertos[$i])) {
+                $acertos = [$i => $query_acertos[$i][0]->acertos];
             }
         }
 
-        for ($i = 0; $i < count($user_id); $i++) {
-            $indice = $user_id[$i];
-            $valor = $notas[$i];
-            array_push($notas_user, [$indice => $valor]);
-        }
-
-        #total de questoes
-        $total_questoes = Question::find_by_sql("select COUNT(questions.value)as total from questions
-                                                    WHERE(questions.activity_id = ?)", array($activity_id));
-        $total_questoes = (int) $total_questoes[0]->total;
-
-        #valor base
-        $base = Question::find_by_sql("select count(questions.value)/2 as media FROM questions
-                                          WHERE(questions.activity_id = ?)", array($activity_id));
-        $base = (int) $base[0]->media;
-
-        for ($i = 0; $i < count($user_id); $i++) {
-
-            foreach ($notas_user[$i] as $key => $value) {
-                $aprovados = (count($value > $base));
-                $reprovados = (count($value < $base));
+        for ($i = 0; $i <= count($query_total_questoes); $i++) {
+            if (!empty($query_total_questoes[$i])) {
+                $total = [$i => $query_total_questoes[$i][0]->total];
             }
         }
-
-        #completo
-
-        $questoes_acertos = array();
-
-        #pega todos os alunos q fizeram a prova
-        for ($i = 0; $i < count($user_id); $i++) {
-            #pega as questoes
-            for ($j = 1; $j <= $total_questoes; $j++) {
-                $questoes_acertos[] = Question::find_by_sql("SELECT count(questions.id) as total from questions 
-                                                                join answers on answers.question_id = questions.id 
-                                                                join users on users.id = answers.user_id 
-                                                                where(answers.alternative = questions.answer and 
-                                                                users.id = ? and questions.number = ? and
-                                                                questions.activity_id = ?)"
-                                , array($user_id[$i], $j, $activity_id)
-                );
+        for ($i = 0; $i <= count($acertos); $i++) {
+            if (!empty($acertos[$i])) {
+                $erros[$i] = $total[$i] - $acertos[$i];
             }
         }
-        #pega todos os alunos q fizeram a prova
-        for ($i = 0; $i < count($user_id); $i++) {
-            #pega as questoes
-            for ($j = 1; $j <= $total_questoes; $j++) {
-                $questoes_erros[] = Question::find_by_sql("SELECT distinct count(questions.id) as total from questions 
-                                                           join answers on answers.question_id = questions.id 
-                                                           join users on users.id = answers.user_id 
-                                                           where(answers.alternative != questions.answer and 
-                                                           questions.number = ?  and questions.activity_id = ?)"
-                                , array($j, $activity_id));
-            }
-        }
-        $acertos = $this->somarQuestoes($questoes_acertos, $total_questoes);
-        $erros = $this->somarQuestoes($questoes_erros, $total_questoes);
-
-        $this->view->setVars([
-            'tipo' => $post,
-            'aprovados' => $aprovados,
-            'reprovados' => $reprovados,
-            'acertos' => $acertos,
-            'erros' => $erros,
-            'total' => $total_questoes,
-            'assunto' => $subject
-        ]);
+        var_dump($erros);
     }
 
 }
